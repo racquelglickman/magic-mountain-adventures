@@ -31,7 +31,8 @@ def make_users():
             first_name=first_name,
             last_name=last_name,
             username=f'{first_name}.{last_name}',
-            height=randint(30, 60)
+            height=randint(30, 60),
+            _password_hash=fake.ssn()
         )
         users.append(user)
 
