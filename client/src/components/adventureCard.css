@@ -52,6 +52,14 @@
 .adventureAttractionName {
     margin-bottom: .5rem;
     text-shadow: 0 0 10px rgb(188, 188, 188);
+    transition: transform 0.3s ease-in-out;
+}
+
+.adventureAttractionName:hover,
+.adventureAttractionName:visited {
+  text-decoration: none;
+  color: black;
+  transform: scale(1.02);
 }
 
 .adventureButton {
