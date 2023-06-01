@@ -1,9 +1,9 @@
 import React from 'react'
 import AttractionCard from './AttractionCard'
 
-function AttractionsContainer({ attractions }) {
+function AttractionsContainer({ filteredList }) {
   
-const attractionsToRender = attractions.map((attraction) => {
+const attractionsToRender = filteredList.map((attraction) => {
   return <AttractionCard key={attraction.id} attraction={attraction} />
 })
 
