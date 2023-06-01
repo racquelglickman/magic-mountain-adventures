@@ -1,8 +1,17 @@
 import React from 'react'
+import AdventuresCard from './AdventuresCard'
 
-function AdventuresContainer({adventures}) {
+function AdventuresContainer({adventures, setUserAdventures}) {
 
-    const userAdventures = adventures.map((adventure) => {return <p>{adventure.attraction.name}</p>})
+    function onAdventureDelete(id) {
+        const filteredList = adventures.filter((adventure) => {
+          return adventure.id !== id
+        })
+      
+        setUserAdventures(filteredList)
+      }
+
+    const userAdventures = adventures.map((adventure) => {return <AdventuresCard adventure={adventure} onAdventureDelete={onAdventureDelete}/>})
 
   return (
     <div>

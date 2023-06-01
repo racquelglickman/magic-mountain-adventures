@@ -88,7 +88,7 @@ function Home() {
               </div>
             </div>
           ) : (
-            <AdventuresContainer adventures={userAdventures}/>
+            <AdventuresContainer adventures={userAdventures} setUserAdventures={setUserAdventures}/>
           )}      
         </div>
         <div className="mapContainer">
