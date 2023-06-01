@@ -22,7 +22,7 @@ function Home() {
   }
 
   const filteredList = attractions.filter((attraction) => {
-    return attraction.name.toLowerCase().includes(attractionSearch.toLowerCase()) || attraction.thrill_level.toLowerCase().includes(attractionSearch.toLocaleLowerCase());
+    return attraction.height_req <= user.height && (attraction.name.toLowerCase().includes(attractionSearch.toLowerCase()) || attraction.thrill_level.toLowerCase().includes(attractionSearch.toLocaleLowerCase()));
   });
 
   const handleNextPage = () => {
