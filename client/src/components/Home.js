@@ -1,8 +1,9 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import Search from './Search'
 import AttactionsContainer from './AttractionsContainer'
 import { MyContext } from './MyProvider'
 import ToggleSwitch from './ToggleSwitch'
+import AdventuresContainer from './AdventuresContainer'
 
 function Home() {
 
@@ -26,11 +27,24 @@ function Home() {
     setToggleAdventures(!toggleAdventures)
   }
 
+  // fetches user adventures
+
+  const [userAdventures, setUserAdventures] = useState([])
+
+  
+  useEffect(() => {
+    fetch(`/adventures/user/${user.id}`)
+    .then(r => r.json())
+    .then(data => {
+      setUserAdventures(data)
+      console.log(data)})
+  }, [])
+
   return (
     <div>
       <ToggleSwitch label=' ' handleToggle={handleToggle}/>
       {toggleAdventures ? null : <Search attractionSearch={attractionSearch} handleSearch={handleSearch} />}
-      {toggleAdventures ? 'Adventures Placeholder' : <AttactionsContainer attractions={attractions} filteredList={filteredList} />}
+      {toggleAdventures ? <AdventuresContainer adventures={userAdventures}/> : <AttactionsContainer attractions={attractions} filteredList={filteredList} setUserAdventures={setUserAdventures} adventures={userAdventures}/>}
     </div>
   )
 }
