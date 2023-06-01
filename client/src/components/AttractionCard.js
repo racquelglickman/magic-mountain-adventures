@@ -1,8 +1,8 @@
 import React from 'react'
 
-function AttractionCard() {
+function AttractionCard({ attraction }) {
   return (
-    <div>AttractionCard</div>
+    <div>{attraction.name}</div>
   )
 }
 

@@ -4,6 +4,19 @@ import Login from "./Login";
 export const MyContext = createContext()
 
 function MyProvider({ children }) {
+    
+    // attractions fetch
+
+    const [attractions, setAttractions] = useState([])
+
+    useEffect(() => {
+        fetch("/attractions")
+        .then(r => r.json())
+        .then(data => setAttractions(data))
+    }, [])
+    
+    
+    // auto login authetification
     const [user, setUser] = useState(null)
 
     useEffect(() => {
@@ -19,7 +32,7 @@ function MyProvider({ children }) {
 
     return (
         <MyContext.Provider
-            value={({user: user, setUser: setUser})}
+            value={({user: user, setUser: setUser, attractions: attractions})}
         >
             {children}
         </MyContext.Provider>
