@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 function Nav() {
   return (
     <div className='navBar'>
-      <img src="https://imgur.com/5DenyI2.png" height='225px' alt='logo'/>
+      <img src="https://imgur.com/5DenyI2.png" height='175px' alt='logo'/>
       <div className="navContent">
         <h1 className='tagLine'>Your adventure awaits...</h1>
         <div className="links">
