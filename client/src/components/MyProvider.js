@@ -4,9 +4,10 @@ export const MyContext = createContext()
 
 function MyProvider({ children }) {
 
+
     return (
         <MyContext.Provider
-            // value={({pass: pass})}
+            // value={({user: user, setUser: setUser})}
         >
             {children}
         </MyContext.Provider>
