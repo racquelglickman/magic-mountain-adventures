@@ -119,4 +119,4 @@ api.add_resource(Adventures, '/adventures')
 
 
 if __name__ == '__main__':
-    app.run(port=5556, debug=True)
+    app.run(port=5555, debug=True)
