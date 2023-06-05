@@ -62,6 +62,37 @@ class UserById(Resource):
         
 api.add_resource(UserById, '/users/<int:id>')
 
+class Attractions(Resource):
+    def get(self):
+        return [attraction.to_dict() for attraction in Attraction.query.all()], 200
+    
+api.add_resource(Attractions, '/attractions')
+
+class AttractionById(Resource):
+    def get(self, id):
+        attraction = Attraction.query.filter_by(id=id).first()
+
+        if attraction:
+            return attraction.to_dict(), 200
+        else:
+            return {'error': '404: Attraction not found'}, 404
+
+    def patch(self, id):
+        attraction = Attraction.query.filter_by(id=id).first()
+        for attr in request.json():
+            setattr(attraction, attr, request.json()[attr])
+
+        db.session.add(attraction)
+        db.session.commit()
+
+        response = make_response(
+            attraction.to_dict(), 202
+        )
+
+        return response
+
+api.add_resource(AttractionById, '/attractions/<int:id>')
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
