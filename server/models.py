@@ -1,5 +1,6 @@
 from sqlalchemy_serializer import SerializerMixin
 from sqlalchemy.orm import validates
+from sqlalchemy.ext.associationproxy import association_proxy
 
 from config import db
 
@@ -17,8 +18,9 @@ class User(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 
     adventures = db.relationship("Adventure", backref="user")
+    attractions = association_proxy('adventures', 'attraction')
 
-    serialize_rules = ("-adventures.user",)
+    serialize_rules = ("-adventures.user", "-attractions.users")
 
     @validates('username')
     def validate_username(self, key, username):
@@ -59,8 +61,9 @@ class Attraction(db.Model, SerializerMixin):
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 
     adventures = db.relationship("Adventure", backref="attraction")
+    users = association_proxy('adventures', 'user')
 
-    serialize_rules = ("-adventures.attraction",)
+    serialize_rules = ("-adventures.attraction", "-users.attractions")
 
     def __repr__(self):
         return f"<Name: {self.name} / Type: {self.type} / Average Rating: {self.avg_rating}>"
