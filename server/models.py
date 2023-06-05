@@ -15,6 +15,10 @@ class User(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default = db.func.now())
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 
+    adventures = db.relationship("Adventure", backref="user")
+
+    serialize_rules = ("-adventures.user",)
+
     def __repr__(self):
         return f"<User: {self.last_name}, {self.first_name} / Username: {self.username}>"
 
@@ -35,6 +39,10 @@ class Attraction(db.Model, SerializerMixin):
     created_at = db.Column(db.DateTime, server_default = db.func.now())
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())
 
+    adventures = db.relationship("Adventure", backref="attraction")
+
+    serialize_rules = ("-adventures.attraction",)
+
     def __repr__(self):
         return f"<Name: {self.name} / Type: {self.type} / Average Rating: {self.avg_rating}>"
 
@@ -49,6 +57,8 @@ class Adventure(db.Model, SerializerMixin):
     rating = db.Column(db.Float)
     time = db.Column(db.String)
     date = db.Column(db.DateTime, server_default = db.func.now())
+
+    serialize_rules = ("-user.adventures", "-attraction.adventures")
 
     def __repr__(self): 
         return f"<User: {self.user_id} / Attraction: {self.attraction_id} / Ridden: {self.ridden}>"
