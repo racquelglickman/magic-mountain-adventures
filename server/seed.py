@@ -54,7 +54,6 @@ if __name__ == '__main__':
         make_attraction("Buccaneer", 'Flat', 'Mild', 0)
         make_attraction("Dive Devil", 'Flat', 'Moderate', 48)
         make_attraction("Full Throttle", 'Roller Coaster', 'Maximum', 54)
-        
         make_attraction("West Coast Racers", "Roller Coaster", "Maximum", 54)
         make_attraction("Twisted Colossus", "Roller Coaster", "Maximum", 48)
         make_attraction("Scream", "Roller Coaster", "Moderate", 54)
