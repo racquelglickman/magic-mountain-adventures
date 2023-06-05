@@ -42,7 +42,8 @@ def make_adventures(attractions, users):
     for i in range(200):
         adventure = Adventure(
             user_id=rc([user.id for user in users]),
-            attraction_id =rc([attraction.id for attraction in attractions])
+            attraction_id =rc([attraction.id for attraction in attractions]),
+            ridden=False
         )
         adventures.append(adventure)
     
