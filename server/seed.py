@@ -22,6 +22,32 @@ def make_attraction(name, type, thrill, height):
     
     attractions.append(new_attraction)
 
+def make_users():
+    users = []
+    for i in range(25):
+        first_name=fake.first_name()
+        last_name=fake.last_name()
+        user = User(
+            first_name=first_name,
+            last_name=last_name,
+            username=f'{first_name}.{last_name}',
+            height=randint(30, 60)
+        )
+        users.append(user)
+
+    return users
+
+def make_adventures(attractions, users):
+    adventures = []
+    for i in range(200):
+        adventure = Adventure(
+            user_id=rc([user.id for user in users]),
+            attraction_id =rc([attraction.id for attraction in attractions])
+        )
+        adventures.append(adventure)
+    
+    return adventures
+
 if __name__ == '__main__':
     fake = Faker()
     with app.app_context():
@@ -74,6 +100,19 @@ if __name__ == '__main__':
         make_attraction("Goliath", "Roller Coaster", "Maximum", 48)
         make_attraction("Gold Rusher", "Roller Coaster", "Moderate", 48)
 
+        print("Seeding attractions...")
         db.session.add_all(attractions)
         db.session.commit()
+
+        print("Seeding users...")
+        users = make_users()
+        db.session.add_all(users)
+        db.session.commit()
+
+        print("Seeding adventures...")
+        adventures = make_adventures(attractions, users)
+        db.session.add_all(adventures)
+        db.session.commit()
+
+        print("Seeding done.")
 
