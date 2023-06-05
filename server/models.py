@@ -24,8 +24,8 @@ class User(db.Model, SerializerMixin):
 
     @validates('username')
     def validate_username(self, key, username):
-        if len(username) > 15 or len(username) < 7:
-            raise ValueError("Username must be between 7 and 15 characters")
+        if len(username) > 25 or len(username) < 1:
+            raise ValueError("Username must be between 1 and 25 characters")
         return username
     
     @validates('first_name')

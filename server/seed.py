@@ -54,9 +54,9 @@ if __name__ == '__main__':
     with app.app_context():
         print("Starting seed...")
 
-        db.session.delete(User)
-        db.session.delete(Attraction)
-        db.session.delete(Adventure)
+        User.query.delete()
+        Attraction.query.delete()
+        Adventure.query.delete()
 
         make_attraction('Swashbuckler', 'Flat', 'Moderate', 42)
         make_attraction("Sylvester's Pounce and Bounce", 'Kids', 'Mild', 36)
@@ -71,7 +71,7 @@ if __name__ == '__main__':
         make_attraction("Jammin' Bumers", 'Flat', 'Mild', 42)
         make_attraction("Whistlestop Train", 'Transportation', 'Mild', 0)
         make_attraction("WONDER WOMAN™ Flight of Courage", 'Roller Coaster', 'Maximum', 48)
-        make_attraction("TEEN TITANS™ Turbo Spin", 'Flat', 48)
+        make_attraction("TEEN TITANS™ Turbo Spin", 'Flat', 'Moderate', 48)
         make_attraction("Apocalypse", 'Roller Coaster', 'Moderate', 48)
         make_attraction("BATMAN The Ride", 'Roller Coaster', 'Maximum', 54)
         make_attraction("Speedy Gonzales Hot Rod Racers", 'Roller Coaster', 'Moderate', 36)
