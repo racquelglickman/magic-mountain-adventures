@@ -93,6 +93,29 @@ class AttractionById(Resource):
 
 api.add_resource(AttractionById, '/attractions/<int:id>')
 
+class Adventures(Resource):
+    def get(self):
+        return [adventure.to_dict() for adventure in Adventure.query.all()]
+    
+    def post(self):
+        try:
+            new_adventure = User(
+                user_id=request.form['user_id'],
+                attraction_id=request.form['first_name'],
+                ridden=False
+            )
+        
+            db.session.add(new_adventure)
+            db.session.commit()
+
+            new_adventure_dict = new_adventure.to_dict()
+
+            return new_adventure_dict, 201
+        except:
+            return {'error': '400: Validation error'}, 400
+
+api.add_resource(Adventures, '/adventures')
+
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)
