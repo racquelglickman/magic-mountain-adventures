@@ -10,6 +10,7 @@ from flask_restful import Resource
 from config import app, db, api
 from models import User, Attraction, Adventure
 
+
 # Views go here!
 @app.route('/')
 def home():
