@@ -74,5 +74,6 @@ if __name__ == '__main__':
         make_attraction("Goliath", "Roller Coaster", "Maximum", 48)
         make_attraction("Gold Rusher", "Roller Coaster", "Moderate", 48)
 
-
+        db.session.add_all(attractions)
+        db.session.commit()
 
