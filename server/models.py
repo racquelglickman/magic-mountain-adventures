@@ -44,7 +44,7 @@ class Adventure(db.Model, SerializerMixin):
     id = db.Column(db.Integer, primary_key = True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     attraction_id = db.Column(db.Integer, db.ForeignKey('attractions.id'))
-    ridden = db.Column(db.Boolean, server_default = False)
+    ridden = db.Column(db.Boolean)
     wait_time = db.Column(db.Integer)
     rating = db.Column(db.Float)
     time = db.Column(db.String)
