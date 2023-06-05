@@ -49,6 +49,20 @@ class UserById(Resource):
         else:
             return {'error': '404: User not found'}, 404
         
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        for attr in request.json():
+            setattr(user, attr, request.json()[attr])
+
+        db.session.add(user)
+        db.session.commit()
+
+        response = make_response(
+            user.to_dict(), 202
+        )
+
+        return response
+        
     def delete(self, id):
         user = User.query.filter_by(id=id).first()
         if user:
@@ -117,6 +131,42 @@ class Adventures(Resource):
 
 api.add_resource(Adventures, '/adventures')
 
+class AdventureById(Resource):
+    def get(self, id):
+        adventure = Adventure.query.filter_by(id=id).first()
+
+        if adventure:
+            return adventure.to_dict(), 200
+        else:
+            return {'error': '404: Attraction not found'}, 404
+        
+    def patch(self, id):
+        adventure = Adventure.query.filter_by(id=id).first()
+        for attr in request.json():
+            setattr(adventure, attr, request.json()[attr])
+
+        db.session.add(adventure)
+        db.session.commit()
+
+        response = make_response(
+            adventure.to_dict(), 202
+        )
+
+        return response
+    
+    def delete(self, id):
+        adventure = Adventure.query.filter_by(id=id).first()
+
+        if adventure:
+            db.session.delete(adventure)
+            db.session.commit()
+
+            response = make_response("", 204)
+
+            return response
+        return {'error': "Adventure not found"}, 404
+    
+api.add_resource(AdventureById, '/adventures/<int:id>')
 
 if __name__ == '__main__':
     app.run(port=5555, debug=True)

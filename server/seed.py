@@ -68,7 +68,7 @@ if __name__ == '__main__':
         make_attraction("CraZanity", 'Flat', 'Maximum', 52)
         make_attraction("Daffy's Adventure Tours", 'Kids', 'Mild', 0)
         make_attraction("Elmer's Weather Balloons", 'Kids', 'Mild', 0)
-        make_attraction("Jammin' Bumers", 'Flat', 'Mild', 42)
+        make_attraction("Jammin' Bumpers", 'Flat', 'Mild', 42)
         make_attraction("Whistlestop Train", 'Transportation', 'Mild', 0)
         make_attraction("WONDER WOMAN™ Flight of Courage", 'Roller Coaster', 'Maximum', 48)
         make_attraction("TEEN TITANS™ Turbo Spin", 'Flat', 'Moderate', 48)
