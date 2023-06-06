@@ -10,13 +10,16 @@ import UserProfile from "./UserProfile";
 import Error from "./Error";
 import PlanAdventure from "./PlanAdventure";
 
+import LeafletMap from "./LeafletMap";
+
 function App() {
   
 return (
   <div>
   <MyProvider>
     <Nav/>
-    <Map/>
+    {/* <Map/> */}
+    <LeafletMap />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/login' element={<Login />} />
