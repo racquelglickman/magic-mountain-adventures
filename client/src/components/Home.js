@@ -1,6 +1,7 @@
 import React from 'react'
 
 function Home() {
+
   return (
     <div>
         <h1>Hello Theme Park Lovers</h1>

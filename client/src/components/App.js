@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Switch, Route, Routes } from "react-router-dom";
-import MyProvider from "./MyProvider";
+import React, { useContext, useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import MyProvider, { MyContext } from "./MyProvider";
 import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
@@ -11,6 +11,7 @@ import Error from "./Error";
 import PlanAdventure from "./PlanAdventure";
 
 function App() {
+
   
 return (
   <div>
@@ -23,11 +24,11 @@ return (
       <Route path='/adventure' element={<PlanAdventure />} />
       <Route path='/profile' element={<UserProfile />} />
       <Route path='*' element={<Error />} />
-    </Routes>
-  </MyProvider>
-  </div>
-  
-)
+      </Routes>
+    </MyProvider>
+    </div>
+    
+  )
   
 }
 

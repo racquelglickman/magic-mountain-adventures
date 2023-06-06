@@ -1,8 +1,8 @@
-"""creates tables
+"""add password column
 
-Revision ID: 4b5f8297b97f
+Revision ID: 35d670302a15
 Revises: 
-Create Date: 2023-06-05 15:28:55.453425
+Create Date: 2023-05-31 17:33:40.561423
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '4b5f8297b97f'
+revision = '35d670302a15'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -36,12 +36,14 @@ def upgrade():
     op.create_table('users',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('username', sa.String(), nullable=False),
+    sa.Column('_password_hash', sa.String(), nullable=False),
     sa.Column('first_name', sa.String(), nullable=False),
     sa.Column('last_name', sa.String(), nullable=False),
     sa.Column('height', sa.Integer(), nullable=True),
     sa.Column('created_at', sa.DateTime(), server_default=sa.text('(CURRENT_TIMESTAMP)'), nullable=True),
     sa.Column('updated_at', sa.DateTime(), nullable=True),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('username')
     )
     op.create_table('adventures',
     sa.Column('id', sa.Integer(), nullable=False),
