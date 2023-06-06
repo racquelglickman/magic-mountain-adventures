@@ -2,7 +2,7 @@
   "name": "magic-mountain-adventures",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://127.0.0.1:5555/",
+  "proxy": "http://localhost:5555",
   "dependencies": {
     "@react-google-maps/api": "^2.18.1",
     "@testing-library/jest-dom": "^5.12.0",
