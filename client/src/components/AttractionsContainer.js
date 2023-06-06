@@ -1,5 +1,6 @@
 import React from 'react'
 import AttractionCard from './AttractionCard'
+import './attractionCard.css'
 
 function AttractionsContainer({ attractions }) {
   
@@ -8,7 +9,7 @@ const attractionsToRender = attractions.map((attraction) => {
 })
 
   return (
-    <div>
+    <div className="attractionContainer">
       {attractionsToRender}
     </div>
   )
