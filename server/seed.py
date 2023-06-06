@@ -99,6 +99,15 @@ async def description_extractor(url):
     # OPTIONAL: call _soup_taster() to clean/process parsed text
     # return parsed text in dict
     # document.querySelectorAll('.elementor-widget-theme-post-content p')
+
+page = requests.get('https://api.themeparks.wiki/v1/entity/c6073ab0-83aa-4e25-8d60-12c8f25684bc/children')
+attractions_temp = page.json()['children']
+# print(attractions)
+for attraction in attractions_temp:
+    if attraction['entityType'] == 'ATTRACTION':
+        print(attraction['name'])
+        attraction.attraction_key = attraction['id']
+
     
 if __name__ == '__main__':
     
@@ -173,6 +182,15 @@ if __name__ == '__main__':
                 print("Bad keyword given. Assuming preexisting data dump.")
         else:
             print("No keyword given. Assuming preexisting data dump.")
+
+            page = requests.get('https://api.themeparks.wiki/v1/entity/c6073ab0-83aa-4e25-8d60-12c8f25684bc/children')
+        
+        # attractions_temp = page.json()['children']
+        # # print(attractions)
+        # for attraction in attractions_temp:
+        #     if attraction['entityType'] == 'ATTRACTION':
+        #         print(attraction['name'])
+        #         attraction.attraction_key = attraction['id']
         
 
         print("Seeding attractions...")
