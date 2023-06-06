@@ -14,7 +14,7 @@ function App() {
   
 return (
   <div>
-    <MyProvider>
+  <MyProvider>
     <Nav/>
     <Map/>
     <Routes>

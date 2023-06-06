@@ -10,6 +10,10 @@ function Map() {
   });
 
   const center = useMemo(() => ({ lat: 34.4259, lng: -118.5974 }), [])
+  const options = useMemo(() => ({
+    disableDefaultUI: true,
+    clickableIcons: false,
+  }), [])
 
   return (
     <div className="mapbox">
@@ -20,6 +24,7 @@ function Map() {
           mapContainerClassName='map-container'
           center = {center}
           zoom = {15}
+          options = {options}
         />
       )}
     </div>
