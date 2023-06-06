@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './authorization.css'
 
 function LoginForm({ onLogin }) {
 
@@ -27,29 +28,35 @@ function LoginForm({ onLogin }) {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
+        <form className="authForm"onSubmit={handleSubmit}>
+            <div className="authFormContent">
+            <label className="authLabel"
+            htmlFor="username">Username</label>
             <input
+            className="authInput"
             type="text"
             id="username"
             autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             />
-            <label htmlFor="password">Password</label>
+            <label className="authLabel"
+            htmlFor="password">Password</label>
             <input
+            className="authInput"
             type="password"
             id="password"
             autoComplete="current-password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             />
-            <button variant="fill" color="primary" type="submit">
+            <button className="authButton" id="loginButton" variant="fill" color="primary" type="submit">
             {isLoading ? "Loading..." : "Login"}
             </button>
             {/* {errors.map((err) => (
             <Error key={err}>{err}</Error>
             ))} */}
+        </div>
         </form>
     );
 }

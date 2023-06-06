@@ -1,32 +1,37 @@
 import React, { useState } from 'react'
 import LoginForm from './LoginForm'
 import SignUpForm from './SignUpForm'
+import './authorization.css'
 
 function Login({ onLogin }) {
 
   const [showLogin, setShowLogin] = useState(true)
 
   return (
-    <div>
+    <div className="authContainer">
+      <div className="logoContainer">
+        <img src="https://i.imgur.com/iIyzChS.gif" alt="Logo" className="logo" />
+      </div>
       {showLogin ? (
         <>
           <LoginForm onLogin={onLogin} />
-          <p>
+          <p className="registrationPrompt">
             Don't have an account? &nbsp;
-            <button onClick={() => setShowLogin(false)}>
+          </p>
+          <button className="authButton" onClick={() => setShowLogin(false)}>
               Sign Up
             </button>
-          </p>
         </>
       ) : (
         <>
           <SignUpForm onLogin={onLogin} />
-          <p>
+          <p className="signInPrompt">
             Already have an account? &nbsp;
-            <button onClick={() => setShowLogin(true)}>
+            </p>
+            <button className="authButton" onClick={() => setShowLogin(true)}>
               Log In
             </button>
-          </p>
+          
         </>
       )}
     </div>
