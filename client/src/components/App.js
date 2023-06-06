@@ -5,6 +5,7 @@ import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
 import AttractionDetails from "./AttractionDetails";
+// import Map from "./Map.js"
 import UserProfile from "./UserProfile";
 import Error from "./Error";
 import PlanAdventure from "./PlanAdventure";
@@ -12,10 +13,10 @@ import PlanAdventure from "./PlanAdventure";
 function App() {
 
   
-  return (
-    <div>
-      <MyProvider>
-      <Nav />
+return (
+  <div>
+  <MyProvider>
+    <Nav/>
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/login' element={<Login />} />
