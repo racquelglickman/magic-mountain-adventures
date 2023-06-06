@@ -5,7 +5,7 @@ import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
 import AttractionDetails from "./AttractionDetails";
-import Map from "./Map.js"
+// import Map from "./Map.js"
 import UserProfile from "./UserProfile";
 import Error from "./Error";
 import PlanAdventure from "./PlanAdventure";
@@ -16,7 +16,6 @@ return (
   <div>
   <MyProvider>
     <Nav/>
-    <Map />
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path='/login' element={<Login />} />
