@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import './authorization.css'
 
 function SignUpForm({ onLogin }) {
     const [username, setUsername] = useState("");
@@ -39,59 +40,73 @@ function SignUpForm({ onLogin }) {
     }
   
     return (
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username</label>
+      <form className="authForm" onSubmit={handleSubmit}>
+        <div className="authFormContent">
+        <label className="authLabel"
+        htmlFor="username">Username</label>
         <input
+            className="authInput"
             type="text"
             id="username"
             autoComplete="off"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
         />
-        <label htmlFor="password">Password</label>
+        <label className="authLabel"
+        htmlFor="password">Password</label>
         <input
+            className="authInput"
             type="password"
             id="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             autoComplete="current-password"
         />
-        <label htmlFor="password">Password Confirmation</label>
+        <label className="authLabel"
+        htmlFor="password">Password Confirmation</label>
         <input
+            className="authInput"
             type="password"
             id="password_confirmation"
             value={passwordConfirmation}
             onChange={(e) => setPasswordConfirmation(e.target.value)}
             autoComplete="current-password"
         />
-        <label htmlFor="first_name">First Name</label>
+        <label className="authLabel"
+        htmlFor="first_name">First Name</label>
         <input
+            className="authInput"
             type="text"
             id="first_name"
             autoComplete="off"
             value={first_name}
             onChange={(e) => setFirstName(e.target.value)}
         />
-        <label htmlFor="last_name">Last Name</label>
+        <label className="authLabel"
+        htmlFor="last_name">Last Name</label>
         <input
+            className="authInput"
             type="text"
             id="last_name"
             autoComplete="off"
             value={last_name}
             onChange={(e) => setLastName(e.target.value)}
         />
-        <label htmlFor="height">Height</label>
+        <label className="authLabel"
+        htmlFor="height">Height</label>
         <input
+            className="authInput"
             type="text"
             id="height"
             autoComplete="off"
             value={height}
             onChange={(e) => setHeight(e.target.value)}
         />
-        <button type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
+        <button className="authButton" type="submit">{isLoading ? "Loading..." : "Sign Up"}</button>
           {/* {errors.map((err) => (
         // <Error key={err}>{err}</Error>
           ))} */}
+          </div>
       </form>
     );
 }
