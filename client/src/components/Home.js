@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import Search from './Search'
+import AttactionsContainer from './AttractionsContainer'
+import { MyContext } from './MyProvider'
 
 function Home() {
 
+  const { attractions } = useContext(MyContext)
+
   return (
     <div>
-        <h1>Hello Theme Park Lovers</h1>
+        <Search />
+        <AttactionsContainer attractions={attractions}/>
     </div>
   )
 }

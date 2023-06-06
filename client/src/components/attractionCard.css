@@ -1,0 +1,182 @@
+#body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(22, 20, 24);
+    color: #eee;
+    user-select: none;
+  }
+  
+  .attractionCard {
+    user-select:none;
+    max-width: 200px;
+    margin: 1rem;
+    background-color: #282c34;
+    background: linear-gradient(0deg, #ffffff, #cccccc);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: .7rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    overflow: hidden;
+    transition: .5s all;
+    max-height: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-block: 5px;
+    position: relative;
+    width: 200px;
+  }
+
+  .attractionCard .main {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-bottom: -6px;
+    
+  }
+
+  .thumbnail {
+    display: flex;
+    justify-content: center;
+    border-radius: .5rem;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    align-items: center;
+    margin-left: -7px;
+
+  }
+  
+  .attractionName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0px;
+    text-align: left;
+  }
+
+  .attractionType {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0px;
+  }
+  .attractionHeight {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000000;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0px;
+  }
+  
+ .attractionInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    line-height: 0px;
+  }
+  
+ .thrill {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    text-align: left;
+    color: #000000;
+    font-weight: 550;
+    font-size: 11px;
+    line-height: 0px;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  
+  .glow.mild {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+  }
+  
+  .glow.moderate {
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.4);
+  }
+  
+  .glow.maximum {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+  }
+
+  
+  
+  .bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 120px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #282c34;
+    background: linear-gradient(0deg, rgba(40,44,52,1) 0%, rgba(17,0,32,.5) 100%);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: .7rem .7rem 0 0;
+    text-align: center;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+  }
+  
+  .bg h2 {
+    color: #000000;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-shadow: 0 2px 2px rgba(0,0,0,0.3);
+  }
+  
+  @media screen and (min-width: 768px) {
+    .attractionContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding: 10px;
+        max-width: 1000px;
+        width: 50%;
+        margin: 0 auto;
+        margin-left: -20px;
+      }
+    
+    .attractionCard {
+      width: calc(33.33% - 20px);
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media screen and (min-width: 992px) {
+    .attractionCard {
+      width: calc(25% - 20px);
+    }
+  }
+
+  .pageButton {
+    height: 3rem;
+    margin-top: 1rem;
+    padding: 0.1rem 1rem;
+    border: none;
+    background-color: #3d3d3d;
+    color: #282c34;
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: Arial, Helvetica, sans-serif;
+  }  
+ 
+  
+  .button-container {
+    display: flex;
+    justify-content: left;
+    margin-top: 5px;
+    margin-left: 225px;
+    margin-bottom: 20px;
+  }

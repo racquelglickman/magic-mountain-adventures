@@ -1,8 +1,17 @@
 import React from 'react'
+import AttractionCard from './AttractionCard'
+import './attractionCard.css'
 
-function AttractionsContainer() {
+function AttractionsContainer({ attractions }) {
+  
+const attractionsToRender = attractions.map((attraction) => {
+  return <AttractionCard key={attraction.id} attraction={attraction} />
+})
+
   return (
-    <div>AttractionsContainer</div>
+    <div className="attractionContainer">
+      {attractionsToRender}
+    </div>
   )
 }
 
