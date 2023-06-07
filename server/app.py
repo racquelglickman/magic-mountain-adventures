@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
+import json
 
 # Remote library imports
 from flask import request, session, make_response
@@ -80,7 +81,25 @@ api.add_resource(UserById, '/users/<int:id>')
 
 class Attractions(Resource):
     def get(self):
-        return [attraction.to_dict() for attraction in Attraction.query.all()], 200
+        attractions_list = list()
+        for attraction in Attraction.query.all():
+            attraction_dict = attraction.to_dict()
+            if "description" in attraction_dict:
+                if type(attraction_dict["description"]) == str:
+                    attraction_dict['description'] = json.loads(attraction_dict['description'])
+
+            attractions_list.append(attraction_dict)
+
+        # for attraction_obj in attractions_list:
+        #     if "description" in attraction_obj:
+        #         if type(attraction_obj["description"]) == str:
+        #             attraction_obj['description'] = json.loads(attraction_obj['description'])
+            
+        # attractions_dicts = [attraction.to_dict() for attraction in Attraction.query.all()], 200
+        # [json.loads(attraction.description) for attraction in attractions_dicts]
+        return attractions_list, 200
+
+
     
 api.add_resource(Attractions, '/attractions')
 
@@ -89,7 +108,12 @@ class AttractionById(Resource):
         attraction = Attraction.query.filter_by(id=id).first()
 
         if attraction:
-            return attraction.to_dict(), 200
+            attraction_dict = {
+                'name': attraction.name, 
+                'url': attraction.url,
+                'description': json.loads(attraction.description)
+            }
+            return attraction_dict, 200
         else:
             return {'error': '404: Attraction not found'}, 404
 
@@ -114,13 +138,14 @@ class Adventures(Resource):
         return [adventure.to_dict() for adventure in Adventure.query.all()]
     
     def post(self):
-        try:
-            new_adventure = User(
-                user_id=request.form['user_id'],
-                attraction_id=request.form['first_name'],
-                ridden=False
-            )
+
+        new_adventure = Adventure(
+            user_id=request.json['user_id'],
+            attraction_id=request.json['attraction_id'],
+            ridden=False
+        )
         
+        try:
             db.session.add(new_adventure)
             db.session.commit()
 
@@ -168,6 +193,13 @@ class AdventureById(Resource):
         return {'error': "Adventure not found"}, 404
     
 api.add_resource(AdventureById, '/adventures/<int:id>')
+
+class AdventureByUserId(Resource):
+    def get(self, id):
+
+        return [adventure.to_dict() for adventure in Adventure.query.filter(Adventure.user_id == id).all()]
+    
+api.add_resource(AdventureByUserId, '/adventures/user/<int:id>')
 
 class Signup(Resource):
 

@@ -15,7 +15,6 @@ function MyProvider({ children }) {
         .then(data => setAttractions(data))
     }, [])
     
-    
     // auto login authetification
     const [user, setUser] = useState(null)
 
