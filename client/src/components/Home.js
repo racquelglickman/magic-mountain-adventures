@@ -1,8 +1,10 @@
-import React, { useContext, useState } from 'react';
+
+import React, { useContext, useState, useEffect } from 'react';
 import Search from './Search';
 import AttractionsContainer from './AttractionsContainer';
 import { MyContext } from './MyProvider';
 import ToggleSwitch from './ToggleSwitch';
+import AdventuresContainer from './AdventuresContainer'
 import './attractionCard.css';
 
 function Home() {
@@ -38,6 +40,19 @@ function Home() {
 
   const showPreviousButton = currentPage > 1;
 
+  // fetches user adventures
+
+  const [userAdventures, setUserAdventures] = useState([])
+
+  
+  useEffect(() => {
+    fetch(`/adventures/user/${user.id}`)
+    .then(r => r.json())
+    .then(data => {
+      setUserAdventures(data)
+      console.log(data)})
+  }, [])
+
   return (
     <div className="homeContainer">
       
@@ -54,6 +69,9 @@ function Home() {
                 filteredList={filteredList}
                 currentPage={currentPage}
                 attractionsPerPage={attractionsPerPage}
+                attractions={attractions} 
+                setUserAdventures={setUserAdventures} 
+                adventures={userAdventures}
               />
               <div className="buttonContainer">
                 {showPreviousButton && (
@@ -72,7 +90,7 @@ function Home() {
         </div>
         
         {toggleAdventures ? (
-          <div className="mapPlaceholder">Adventures Placeholder</div>
+          <AdventuresContainer adventures={userAdventures}/>
         ) : (
           <div className="mapContainer">
             {/* Map component goes here */}

@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './attractionCard.css';
+import { MyContext } from './MyProvider';
 
-function AttractionCard({ attraction }) {
+function AttractionCard({ attraction, setUserAdventures, adventures }) {
+  
+  const { user } = useContext(MyContext)
+  
   const getThrillLevelClass = () => {
     switch (attraction.thrill_level) {
       case 'Mild':
@@ -14,6 +18,21 @@ function AttractionCard({ attraction }) {
         return 'glow';
     }
   };
+
+  function addAventure() {
+    fetch('/adventures', {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify({
+        user_id: user.id,
+        attraction_id: attraction.id
+      })
+    })
+    .then(r => r.json())
+    .then(data => setUserAdventures([...adventures, data]))
+  }
 
   return (
     <div className="attractionCard">
@@ -30,6 +49,7 @@ function AttractionCard({ attraction }) {
               Thrill Level:{' '}
               <span className={`glow ${getThrillLevelClass()}`}>{attraction.thrill_level}</span>
             </p>
+            <button onClick={addAventure}>ADD</button>
           </div>
         </div>
       </div>
