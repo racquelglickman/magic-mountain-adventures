@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import sys, time, asyncio, json
+import sys, asyncio, json
 
 # Remote library imports
 from faker import Faker
@@ -57,7 +57,8 @@ def make_adventures(attractions, users):
     return adventures
 
 async def web_getter(url):
-    driver_ = webdriver.Chrome('/usr/local/bin/chromedriver')
+    stuff = list()
+    driver_ = webdriver.Chrome(stuff)
     driver_.get(url)
     return driver_
 
