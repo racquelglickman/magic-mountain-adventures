@@ -1,0 +1,284 @@
+#body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: rgb(22, 20, 24);
+    color: #eee;
+    user-select: none;
+  }
+  
+  .homeContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    height: 100vh;
+  }
+  
+  .headerContainer {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: -10px;
+    margin-bottom: 15px;
+  }
+  
+  .contentContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+  }
+
+  .attractionsWrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: calc(100% - 50%);
+  }
+  
+  .attractionContainer {
+    flex: 1;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    padding: 10px;
+    width: 100%;
+    margin: 0 auto;
+  }
+  
+  .mapContainer {
+    flex: 1;
+    margin-top: 10px;
+    max-width: calc(50% - 10px);
+    margin-right: rem;
+  }
+  
+  .mapPlaceholder {
+    width: 100%;
+    height: 400px;
+    background-color: #ccc;
+  }
+
+  @media (max-width: 1200px) {
+    .attractionContainer,
+    .mapContainer {
+      max-width: calc(50% - 20px);
+      margin-right: 10px;
+      margin-left: 10px;
+    }
+  }
+  
+  @media (max-width: 992px) {
+    .attractionContainer,
+    .mapContainer {
+      max-width: 100%;
+      margin-right: 0;
+      margin-left: 0;
+    }
+  }
+
+  .attractionCard {
+    user-select: none;
+    margin: 0.5rem;
+    background-color: #282c34;
+    background: linear-gradient(0deg, #ffffff, #cccccc);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: 0.7rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    overflow: hidden;
+    transition: 0.5s all;
+    max-height: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-block: 5px;
+    position: relative;
+    flex-basis: calc(25% - 1rem);
+    margin-right: 10px;
+    margin-bottom: 5px;
+    
+  }
+  
+  @media screen and (max-width: 1200px) {
+    .attractionCard {
+      flex-basis: calc(33.33% - 5px);
+    }
+  }
+  
+  @media screen and (max-width: 992px) {
+    .attractionCard {
+      flex-basis: calc(50% - 5px);
+    }
+  }
+  
+  @media screen and (max-width: 576px) {
+    .attractionCard {
+      /* Adjusted width with reduced spacing for extra small screens */
+      flex-basis: calc(100% - 5px);
+    }
+  }
+  
+  .attractionCard .main {
+    display: flex;
+    flex-direction: column;
+    width: 90%;
+    padding: 1rem;
+    margin: 0 auto;
+    margin-bottom: -6px;
+  }
+  
+  .thumbnail {
+    display: flex;
+    justify-content: center;
+    border-radius: 0.5rem;
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    align-items: center;
+    margin-left: -7px;
+  }
+  
+  .attractionName {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 14px;
+    margin-bottom: 0px;
+    text-align: left;
+  }
+  
+  .attractionType {
+    font-size: 11px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0px;
+  }
+  
+  .attractionHeight {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: #000000;
+    font-weight: normal;
+    text-align: left;
+    line-height: 0px;
+  }
+  
+  .attractionInfo {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    text-align: left;
+    line-height: 0px;
+  }
+  
+  .thrill {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    text-align: left;
+    color: #000000;
+    font-weight: 550;
+    font-size: 11px;
+    line-height: 0px;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+  
+  .glow.mild {
+    text-shadow: 0 0 8px rgba(0, 255, 0, 0.4);
+  }
+  
+  .glow.moderate {
+    text-shadow: 0 0 8px rgba(255, 255, 0, 0.4);
+  }
+  
+  .glow.maximum {
+    text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
+  }
+  
+  .bg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    height: 120px;
+    margin: 0 auto;
+    width: 100%;
+    background-color: #282c34;
+    background: linear-gradient(0deg, rgba(40, 44, 52, 1) 0%, rgba(17, 0, 32, 0.5) 100%);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: 0.7rem 0.7rem 0 0;
+    text-align: center;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+  }
+  
+  .bg h2 {
+    color: #000000;
+    font-size: 2rem;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    text-shadow: 0 2px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .buttonContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5px;
+    margin-bottom: 20px;
+  }
+
+
+.pageButton {
+  align-items: center;
+  appearance: none;
+  background-color: #FCFCFD;
+  border-radius: 4px;
+  border-width: 0;
+  box-shadow: rgba(45, 35, 66, 0.4) 0 2px 4px,rgba(45, 35, 66, 0.3) 0 7px 13px -3px,#D6D6E7 0 -3px 0 inset;
+  box-sizing: border-box;
+  color: #36395A;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Arial, Helvetica, sans-serif;
+  height: 34px;
+  justify-content: center;
+  line-height: 1;
+  list-style: none;
+  overflow: hidden;
+  padding-left: 12px;
+  padding-right: 12px;
+  position: relative;
+  text-align: left;
+  text-decoration: none;
+  transition: box-shadow .15s,transform .15s;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  white-space: nowrap;
+  will-change: box-shadow,transform;
+  font-size: 12px;
+  margin-right: 10px;
+}
+
+.pageButton:focus {
+  box-shadow: #D6D6E7 0 0 0 1.5px inset, rgba(45, 35, 66, 0.4) 0 2px 4px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+}
+
+.pageButton:hover {
+  box-shadow: rgba(45, 35, 66, 0.4) 0 4px 8px, rgba(45, 35, 66, 0.3) 0 7px 13px -3px, #D6D6E7 0 -3px 0 inset;
+  transform: translateY(-2px);
+}
+
+.pageButton:active {
+  box-shadow: #D6D6E7 0 3px 7px inset;
+  transform: translateY(2px);
+}

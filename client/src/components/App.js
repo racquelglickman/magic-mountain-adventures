@@ -5,31 +5,20 @@ import Home from "./Home";
 import Nav from "./Nav";
 import Login from "./Login";
 import AttractionDetails from "./AttractionDetails";
+// import Map from "./Map.js"
 import UserProfile from "./UserProfile";
 import Error from "./Error";
 import PlanAdventure from "./PlanAdventure";
 
 function App() {
 
-  const [user, setUser] = useState(null)
-
-  useEffect(() => {
-    // auto-login
-    fetch("/check_session").then((r) => {
-      if (r.ok) {
-        r.json().then((user) => setUser(user));
-      }
-    });
-  }, []);
-
-  if (!user) return <Login onLogin= {setUser}/>;
-    
-  return (
-    <div>
-      <MyProvider>
-      <Nav/>
+  
+return (
+  <div>
+  <MyProvider>
+    <Nav/>
     <Routes>
-      <Route path="/" element={<Home setUser= {setUser}/>} />
+      <Route path="/" element={<Home />} />
       <Route path='/login' element={<Login />} />
       <Route path='/attractions/:id' element={<AttractionDetails />} />
       <Route path='/adventure' element={<PlanAdventure />} />
