@@ -100,14 +100,6 @@ async def description_extractor(url):
     # return parsed text in dict
     # document.querySelectorAll('.elementor-widget-theme-post-content p')
 
-page = requests.get('https://api.themeparks.wiki/v1/entity/c6073ab0-83aa-4e25-8d60-12c8f25684bc/children')
-attractions_temp = page.json()['children']
-# print(attractions)
-for attraction in attractions_temp:
-    if attraction['entityType'] == 'ATTRACTION':
-        print(attraction['name'])
-        attraction.attraction_key = attraction['id']
-
     
 if __name__ == '__main__':
     
@@ -121,16 +113,16 @@ if __name__ == '__main__':
 
         # Initial Population of Attractions (w/out descriptions & images)
         make_attraction('Swashbuckler', 'Flat', 'Moderate', 42, 'https://www.sixflags.com/magicmountain/attractions/swashbuckler')
-        make_attraction("Sylvester's Pounce and Bounce", 'Kids', 'Mild', 36, 'https://www.sixflags.com/magicmountain/attractions/sylvesters-pounce-and-bounce')
-        make_attraction("Taz's Trucking Co.", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/tazs-trucking-co')
-        make_attraction("THE RIDDLER's Revenge", 'Roller Coaster', 'Maximum', 54, 'https://www.sixflags.com/magicmountain/attractions/riddlers-revenge')
-        make_attraction("Tweety's Escape", 'Kids', 'Mild', 36, 'https://www.sixflags.com/magicmountain/attractions/tweetys-escape')
+        make_attraction("Sylvester’s Pounce and Bounce", 'Kids', 'Mild', 36, 'https://www.sixflags.com/magicmountain/attractions/sylvesters-pounce-and-bounce')
+        make_attraction("Taz’s Trucking Co.", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/tazs-trucking-co')
+        make_attraction("THE RIDDLER’s Revenge", 'Roller Coaster', 'Maximum', 54, 'https://www.sixflags.com/magicmountain/attractions/riddlers-revenge')
+        make_attraction("Tweety’s Escape", 'Kids', 'Mild', 36, 'https://www.sixflags.com/magicmountain/attractions/tweetys-escape')
         make_attraction("Viper", 'Roller Coaster', 'Maximum', 54, 'https://www.sixflags.com/magicmountain/attractions/viper')
         make_attraction("Canyon Blaster", 'Roller Coaster', 'Mild', 36, 'https://www.sixflags.com/magicmountain/attractions/canyon-blaster')
         make_attraction("CraZanity", 'Flat', 'Maximum', 52, 'https://www.sixflags.com/magicmountain/attractions/crazanity')
-        make_attraction("Daffy's Adventure Tours", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/daffys-adventure-tours')
-        make_attraction("Elmer's Weather Balloons", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/elmers-weather-balloons')
-        make_attraction("Jammin' Bumpers", 'Flat', 'Mild', 42, 'https://www.sixflags.com/magicmountain/attractions/jammin-bumpers')
+        make_attraction("Daffy’s Adventure Tours", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/daffys-adventure-tours')
+        make_attraction("Elmer’s Weather Balloons", 'Kids', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/elmers-weather-balloons')
+        make_attraction("Jammin’ Bumpers", 'Flat', 'Mild', 42, 'https://www.sixflags.com/magicmountain/attractions/jammin-bumpers')
         make_attraction("Whistlestop Train", 'Transportation', 'Mild', 0, 'https://www.sixflags.com/magicmountain/attractions/whistlestop-train')
         make_attraction("WONDER WOMAN™ Flight of Courage", 'Roller Coaster', 'Maximum', 48, 'https://www.sixflags.com/magicmountain/attractions/wonder-woman-flight-of-courage')
         make_attraction("TEEN TITANS™ Turbo Spin", 'Flat', 'Moderate', 48, 'https://www.sixflags.com/magicmountain/attractions/teen-titans-turbo-spin')
@@ -163,7 +155,7 @@ if __name__ == '__main__':
         make_attraction("Goliath", "Roller Coaster", "Maximum", 48, 'https://www.sixflags.com/magicmountain/attractions/goliath')
         make_attraction("Gold Rusher", "Roller Coaster", "Moderate", 48, 'https://www.sixflags.com/magicmountain/attractions/gold-rusher')
 
-
+        # Adding images and descriptions
         if sys.argv[1:]:
             if sys.argv[1] == "-dump":
                 print("Performing data dump...")
@@ -183,14 +175,22 @@ if __name__ == '__main__':
         else:
             print("No keyword given. Assuming preexisting data dump.")
 
-            page = requests.get('https://api.themeparks.wiki/v1/entity/c6073ab0-83aa-4e25-8d60-12c8f25684bc/children')
-        
-        # attractions_temp = page.json()['children']
-        # # print(attractions)
-        # for attraction in attractions_temp:
-        #     if attraction['entityType'] == 'ATTRACTION':
-        #         print(attraction['name'])
-        #         attraction.attraction_key = attraction['id']
+        # Adding attraction keys
+        magic_mountain = requests.get('https://api.themeparks.wiki/v1/entity/c6073ab0-83aa-4e25-8d60-12c8f25684bc/children')
+        scraped = magic_mountain.json()['children']
+        for attraction in attractions:
+            for att_scrape in scraped:
+                if att_scrape['name'] == attraction.name:
+                    attraction.attraction_key = att_scrape['id']
+                    # print(attraction.name, attraction.attraction_key)
+
+        # Adding latitude and longitude
+        for attraction in attractions:
+            ride_page = requests.get(f'https://api.themeparks.wiki/v1/entity/{attraction.attraction_key}')
+            scraped_ride = ride_page.json()
+            ride_location = scraped_ride['location']
+            attraction.latitude = ride_location['latitude']
+            attraction.longitude = ride_location['longitude']
         
 
         print("Seeding attractions...")
