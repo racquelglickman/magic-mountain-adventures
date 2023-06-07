@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import sys, time, asyncio
+import sys, time, asyncio, json
 
 # Remote library imports
 from faker import Faker
@@ -91,14 +91,18 @@ async def description_extractor(url):
     for tag in p_tags:
         p_tag_texts.append(tag.text)
 
-    print(p_tag_texts)
+    sentence_dict = {}
+    for position, text in enumerate(p_tag_texts):
+        sentence_dict[position] = text
 
+    return sentence_dict
 
     # use BeautifulSoup to parse HTML from detected site
     # save parsed text to Python dict
     # OPTIONAL: call _soup_taster() to clean/process parsed text
     # return parsed text in dict
     # document.querySelectorAll('.elementor-widget-theme-post-content p')
+
 
     
 if __name__ == '__main__':
@@ -161,14 +165,11 @@ if __name__ == '__main__':
                 print("Performing data dump...")
                 # Loop through all created attractions
                 for attraction in attractions:
-                    # for current attraction,
-                    # set attraction's description 
-                    # to return of async soup maker
                     attraction.thumbnail = asyncio.run(image_extractor(attraction.url))
                     print(attraction.name, attraction.thumbnail)
-                    # asyncio.run(image_extractor(attraction.url))
-                    
-                # asyncio.run(image_extractor('https://www.sixflags.com/magicmountain/attractions/wonder-woman-flight-of-courage'))
+                    attraction.description = json.dumps(asyncio.run(description_extractor(attraction.url)))
+                    print(attraction.name, attraction.description)
+                
 
             else:
                 print("Bad keyword given. Assuming preexisting data dump.")
@@ -182,7 +183,6 @@ if __name__ == '__main__':
             for att_scrape in scraped:
                 if att_scrape['name'] == attraction.name:
                     attraction.attraction_key = att_scrape['id']
-                    # print(attraction.name, attraction.attraction_key)
 
         # Adding latitude and longitude
         for attraction in attractions:
@@ -191,6 +191,9 @@ if __name__ == '__main__':
             ride_location = scraped_ride['location']
             attraction.latitude = ride_location['latitude']
             attraction.longitude = ride_location['longitude']
+        
+        # attractions[0].description = json.dumps({0: 'Just like the brave pirates next door on the Buccaneer, the Swashbuckler is your ticket to a daring adventure. \xa0You’ll fly boldly through the air with the trees at your feet!'})
+        # print(attractions[0].description)
         
 
         print("Seeding attractions...")
