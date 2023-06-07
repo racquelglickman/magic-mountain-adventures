@@ -114,13 +114,14 @@ class Adventures(Resource):
         return [adventure.to_dict() for adventure in Adventure.query.all()]
     
     def post(self):
-        try:
-            new_adventure = User(
-                user_id=request.form['user_id'],
-                attraction_id=request.form['first_name'],
-                ridden=False
-            )
+
+        new_adventure = Adventure(
+            user_id=request.json['user_id'],
+            attraction_id=request.json['attraction_id'],
+            ridden=False
+        )
         
+        try:
             db.session.add(new_adventure)
             db.session.commit()
 
@@ -168,6 +169,13 @@ class AdventureById(Resource):
         return {'error': "Adventure not found"}, 404
     
 api.add_resource(AdventureById, '/adventures/<int:id>')
+
+class AdventureByUserId(Resource):
+    def get(self, id):
+
+        return [adventure.to_dict() for adventure in Adventure.query.filter(Adventure.user_id == id).all()]
+    
+api.add_resource(AdventureByUserId, '/adventures/user/<int:id>')
 
 class Signup(Resource):
 
