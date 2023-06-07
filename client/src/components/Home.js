@@ -40,33 +40,37 @@ function Home() {
 
   return (
     <div className="homeContainer">
+      
+      {!toggleAdventures ? <Search attractionSearch={attractionSearch} handleSearch={handleSearch} /> : null}
       <div className="headerContainer">
-        <Search attractionSearch={attractionSearch} handleSearch={handleSearch} />
         <ToggleSwitch label=' ' handleToggle={handleToggle} />
       </div>
+      
       <div className="contentContainer">
         <div className="attractionsWrapper">
-        {!toggleAdventures && (
-          <AttractionsContainer
-            filteredList={filteredList}
-            currentPage={currentPage}
-            attractionsPerPage={attractionsPerPage}
-          />
-        )}      <div className="buttonContainer">
-        {showPreviousButton && (
-          <button className="pageButton" onClick={handlePreviousPage} disabled={currentPage === 1}>
-            Prev
-          </button>
-        )}
-        <button
-          className="pageButton"
-          onClick={handleNextPage}
-          disabled={currentPage === Math.ceil(filteredList.length / attractionsPerPage)}
-        >
-          Next
-        </button>
-      </div>
-      </div>
+          {!toggleAdventures && (
+            <div>
+              <AttractionsContainer
+                filteredList={filteredList}
+                currentPage={currentPage}
+                attractionsPerPage={attractionsPerPage}
+              />
+              <div className="buttonContainer">
+                {showPreviousButton && (
+                  <button className="pageButton" onClick={handlePreviousPage} disabled={currentPage === 1}>
+                    Prev
+                  </button>
+                )}
+                <button
+                  className="pageButton"
+                  onClick={handleNextPage}
+                  disabled={currentPage === Math.ceil(filteredList.length / attractionsPerPage)}
+                >Next</button>
+              </div>
+            </div>
+          )}      
+        </div>
+        
         {toggleAdventures ? (
           <div className="mapPlaceholder">Adventures Placeholder</div>
         ) : (
