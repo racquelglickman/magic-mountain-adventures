@@ -1,7 +1,14 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom"
 import './attractionCard.css';
 
 function AttractionCard({ attraction }) {
+  const navigate = useNavigate()
+
+  function handleNavigateClick() {
+    navigate(`/attractions/${attraction.id}`, { state: attraction })
+  }
+
   const getThrillLevelClass = () => {
     switch (attraction.thrill_level) {
       case 'Mild':
@@ -18,7 +25,7 @@ function AttractionCard({ attraction }) {
   return (
     <div className="attractionCard">
       <div className="main">
-        <img className="thumbnail" src="https://i.imgur.com/1EqM0YX.jpg" alt="thumbnail" />
+        <img onClick={handleNavigateClick}  className="thumbnail" src="https://i.imgur.com/1EqM0YX.jpg" alt="thumbnail" />
         <h2 className="attractionName">{attraction.name}</h2>
         <h3 className="attractionType">{attraction.type}</h3>
         {attraction.height_req === 0 ? null : (
