@@ -3,6 +3,7 @@ import Search from './Search';
 import AttractionsContainer from './AttractionsContainer';
 import { MyContext } from './MyProvider';
 import ToggleSwitch from './ToggleSwitch';
+import './attractionCard.css';
 
 function Home() {
   const { attractions, user } = useContext(MyContext);
@@ -13,7 +14,7 @@ function Home() {
 
   function handleSearch(target) {
     setAttractionSearch(target);
-    setCurrentPage(1); // Reset to the first page when the search query changes
+    setCurrentPage(1);
   }
 
   const filteredList = attractions.filter((attraction) => {
@@ -35,23 +36,46 @@ function Home() {
     setToggleAdventures(!toggleAdventures);
   };
 
+  const showPreviousButton = currentPage > 1;
+
   return (
-    <div>
-      <ToggleSwitch label=' ' handleToggle={handleToggle} />
-      {!toggleAdventures && <Search attractionSearch={attractionSearch} handleSearch={handleSearch} />}
-      {!toggleAdventures && (
-        <AttractionsContainer
-          filteredList={filteredList}
-          currentPage={currentPage}
-          attractionsPerPage={attractionsPerPage}
-        />
-      )}
-      {toggleAdventures ? 'Adventures Placeholder' : (
-        <div>
-          <button onClick={handlePreviousPage} disabled={currentPage === 1}>Previous</button>
-          <button onClick={handleNextPage} disabled={currentPage === Math.ceil(filteredList.length / attractionsPerPage)}>Next</button>
-        </div>
-      )}
+    <div className="homeContainer">
+      <div className="headerContainer">
+        <Search attractionSearch={attractionSearch} handleSearch={handleSearch} />
+        <ToggleSwitch label=' ' handleToggle={handleToggle} />
+      </div>
+      <div className="contentContainer">
+        <div className="attractionsWrapper">
+        {!toggleAdventures && (
+          <AttractionsContainer
+            filteredList={filteredList}
+            currentPage={currentPage}
+            attractionsPerPage={attractionsPerPage}
+          />
+        )}      <div className="buttonContainer">
+        {showPreviousButton && (
+          <button className="pageButton" onClick={handlePreviousPage} disabled={currentPage === 1}>
+            Prev
+          </button>
+        )}
+        <button
+          className="pageButton"
+          onClick={handleNextPage}
+          disabled={currentPage === Math.ceil(filteredList.length / attractionsPerPage)}
+        >
+          Next
+        </button>
+      </div>
+      </div>
+        {toggleAdventures ? (
+          <div className="mapPlaceholder">Adventures Placeholder</div>
+        ) : (
+          <div className="mapContainer">
+            {/* Map component goes here */}
+            <div className="mapPlaceholder">Map Placeholder</div>
+          </div>
+        )}
+      </div>
     </div>
   );
 }
