@@ -72,6 +72,9 @@ class Attraction(db.Model, SerializerMixin):
     avg_rating = db.Column(db.Float)
     longitude = db.Column(db.String)
     latitude = db.Column(db.String)
+    url = db.Column(db.String)
+    thumbnail = db.Column(db.String)
+    description = db.Column(db.Text)
     
     created_at = db.Column(db.DateTime, server_default = db.func.now())
     updated_at = db.Column(db.DateTime, onupdate = db.func.now())

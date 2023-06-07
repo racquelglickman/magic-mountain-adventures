@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # Standard library imports
+import json
 
 # Remote library imports
 from flask import request, session, make_response
@@ -80,7 +81,25 @@ api.add_resource(UserById, '/users/<int:id>')
 
 class Attractions(Resource):
     def get(self):
-        return [attraction.to_dict() for attraction in Attraction.query.all()], 200
+        attractions_list = list()
+        for attraction in Attraction.query.all():
+            attraction_dict = attraction.to_dict()
+            if "description" in attraction_dict:
+                if type(attraction_dict["description"]) == str:
+                    attraction_dict['description'] = json.loads(attraction_dict['description'])
+
+            attractions_list.append(attraction_dict)
+
+        # for attraction_obj in attractions_list:
+        #     if "description" in attraction_obj:
+        #         if type(attraction_obj["description"]) == str:
+        #             attraction_obj['description'] = json.loads(attraction_obj['description'])
+            
+        # attractions_dicts = [attraction.to_dict() for attraction in Attraction.query.all()], 200
+        # [json.loads(attraction.description) for attraction in attractions_dicts]
+        return attractions_list, 200
+
+
     
 api.add_resource(Attractions, '/attractions')
 
@@ -89,7 +108,12 @@ class AttractionById(Resource):
         attraction = Attraction.query.filter_by(id=id).first()
 
         if attraction:
-            return attraction.to_dict(), 200
+            attraction_dict = {
+                'name': attraction.name, 
+                'url': attraction.url,
+                'description': json.loads(attraction.description)
+            }
+            return attraction_dict, 200
         else:
             return {'error': '404: Attraction not found'}, 404
 
