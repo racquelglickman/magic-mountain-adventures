@@ -1,8 +1,15 @@
 import React, { useContext } from 'react';
+import { useNavigate } from "react-router-dom"
 import './attractionCard.css';
 import { MyContext } from './MyProvider';
 
 function AttractionCard({ attraction, setUserAdventures, adventures }) {
+  
+  const navigate = useNavigate()
+
+  function handleNavigateClick() {
+    navigate(`/attractions/${attraction.id}`, { state: attraction })
+  }
   
   const { user } = useContext(MyContext)
   
@@ -37,7 +44,7 @@ function AttractionCard({ attraction, setUserAdventures, adventures }) {
   return (
     <div className="attractionCard">
       <div className="main">
-        <img className="thumbnail" src="https://i.imgur.com/1EqM0YX.jpg" alt="thumbnail" />
+        <img onClick={handleNavigateClick}  className="thumbnail" src="https://i.imgur.com/1EqM0YX.jpg" alt="thumbnail" />
         <h2 className="attractionName">{attraction.name}</h2>
         <h3 className="attractionType">{attraction.type}</h3>
         {attraction.height_req === 0 ? null : (
