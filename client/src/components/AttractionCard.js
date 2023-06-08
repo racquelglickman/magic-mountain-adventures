@@ -42,9 +42,9 @@ function AttractionCard({ attraction, setUserAdventures, adventures }) {
   }
 
   return (
-    <div className="attractionCard">
+    <div className="attractionCard" onClick={handleNavigateClick}>
       <div className="main">
-        <img onClick={handleNavigateClick}  className="thumbnail" src={attraction.thumbnail} alt="thumbnail" />
+        <img className="thumbnail" src={attraction.thumbnail} alt="thumbnail" />
         <h2 className="attractionName">{attraction.name}</h2>
         <h3 className="attractionType">{attraction.type}</h3>
         {attraction.height_req === 0 ? null : (
