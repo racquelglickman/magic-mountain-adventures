@@ -1,13 +1,15 @@
-import React, { useState, useMemo } from 'react'
+import React, { useState, useMemo, useContext } from 'react'
 import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet'
 import { Icon } from 'leaflet'
 import "./Map.css"
+import { MyContext } from './MyProvider'
 
 // import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api"
 
-function Map() {
+function Map({ toggle, adventures }) {
   const center = useMemo(() => ({ lat: 34.4243, lng: -118.5973 }), [])
-
+  const { attractions } = useContext(MyContext)
+  
   return (
     <div className='mapbox'>
         <MapContainer center={center} zoom={16}>
@@ -15,6 +17,27 @@ function Map() {
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             />
+            {toggle ? 
+            adventures.map((a) => {
+              return <Marker key={a.id} position={[a.attraction.latitude, a.attraction.longitude]}>
+                <Popup>
+                  <div>
+                    <h3>{a.attraction.name}</h3>
+                    <p>Thrill Level: {a.attraction.thrill_level}</p>
+                  </div>
+                </Popup>
+              </Marker>
+            }) : attractions.map((a) => {
+              return <Marker key={a.id} position={[a.latitude, a.longitude]}>
+                <Popup>
+                  <div>
+                    <h3>{a.name}</h3>
+                    <p>Thrill Level: {a.thrill_level}</p>
+                  </div>
+                </Popup>
+              </Marker>
+            })}
+
         </MapContainer>
     </div>
   )
