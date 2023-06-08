@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import ReviewForm from './ReviewForm'
 
 function AdventuresCard({adventure, onAdventureDelete}) {
 
@@ -19,6 +20,25 @@ function AdventuresCard({adventure, onAdventureDelete}) {
           onAdventureDelete(adventure.id)
         })
       }
+      
+      function handleForm(wait, rating) {
+        console.log(wait, rating)
+
+        fetch(`/adventures/${adventure.id}`,
+        {method: 'PATCH',
+        headers: {
+            "content-type" : "application/json"
+        },
+        body: JSON.stringify({
+          wait_time: wait,
+          rating: rating
+        })})
+        .then(r => r.json())
+        .then(data => {
+          console.log(data)
+          onAdventureDelete(adventure.id)
+        })
+      }
 
       function setRidden() {
         fetch(`/adventures/${adventure.id}`,
@@ -35,8 +55,9 @@ function AdventuresCard({adventure, onAdventureDelete}) {
     <div>
         <h2>{adventure.attraction.name}</h2>
         <p>{adventure.attraction.type}</p>
-        {riddenStatus ? null : <button onClick={setRidden}>RIDDEN</button>}
         <button onClick={handleDelete}>REMOVE</button>
+        {riddenStatus ? <ReviewForm handleForm={handleForm} /> : 
+        <button onClick={setRidden}>COMPLETED?</button>}
     </div>
   )
 }
