@@ -22,7 +22,7 @@ function Nav() {
         <h1 className='tagLine'>Your adventure awaits...</h1>
         <div className="links">
           <Link to="/" className="link">Explore Attractions</Link>
-          <Link to="/adventure" className="link">Plan Adventure</Link>
+          <Link to="/parkmap" className="link">Park Map</Link>
           <Link to="/profile" className="link">My Profile</Link>
           <Link onClick={handleLogout} className="link logoutLink">Logout</Link>
         </div>
