@@ -76,6 +76,20 @@ class UserById(Resource):
             return response
 
         return {'error': "User not found"}, 404
+    
+    def patch(self, id):
+        user = User.query.filter_by(id=id).first()
+        for attr in request.json:
+            setattr(user, attr, request.json[attr])
+
+        db.session.add(user)
+        db.session.commit()
+
+        response = make_response(
+            user.to_dict(), 202
+        )
+
+        return response
         
 api.add_resource(UserById, '/users/<int:id>')
 
