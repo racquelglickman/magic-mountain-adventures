@@ -6,14 +6,14 @@ import { MyContext } from './MyProvider';
 function AttractionDetails() {
   const location = useLocation()
   const attraction = location.state
-  
-  const [onItinerary, setOnItinerary] = useState(false)
+
+  console.log(attraction)
 
   const { user } = useContext(MyContext)
 
-  const description_paragraphs = Object.values(attraction.description).map((paragraph) => {
-    return <p>{paragraph}</p>
-  })
+  // const description_paragraphs = Object.values(attraction.description).map((paragraph) => {
+  //   return <p>{paragraph}</p>
+  // })
 
   function handleClick(e) {
     console.log(e)
@@ -40,7 +40,7 @@ function AttractionDetails() {
   return (
     <div>
       <h1>{attraction.name}</h1>
-      <img src={attraction.thumbnail} alt={attraction.name} />
+      <img src={attraction.thumbnail ? attraction.thumbnail : null} alt={attraction.name} />
       <h3>Attraction Type: {attraction.type}</h3>
       <h3>Thrill Level: {attraction.thrill_level}</h3>
       {attraction.height_req > 0 ? <p>Minimum Height Required: {attraction.height_req} inches</p>: 
@@ -51,7 +51,8 @@ function AttractionDetails() {
       <p>Average User Rating: N/A</p>}
       
       <div>
-        {description_paragraphs}
+        <p>DESCRIPTION GOES HERE</p>
+        {/* {description_paragraphs ? description_paragraphs : <p>DESCRIPTION GOES HERE</p>} */}
       </div>
       
       
