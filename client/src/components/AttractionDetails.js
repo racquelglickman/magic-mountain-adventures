@@ -11,9 +11,9 @@ function AttractionDetails() {
 
   const { user } = useContext(MyContext)
 
-  // const description_paragraphs = Object.values(attraction.description).map((paragraph) => {
-  //   return <p>{paragraph}</p>
-  // })
+  const description_paragraphs = Object.values(attraction.description).map((paragraph) => {
+    return <p>{paragraph}</p>
+  })
 
   function handleClick(e) {
     console.log(e)
@@ -51,8 +51,7 @@ function AttractionDetails() {
       <p>Average User Rating: N/A</p>}
       
       <div>
-        <p>DESCRIPTION GOES HERE</p>
-        {/* {description_paragraphs ? description_paragraphs : <p>DESCRIPTION GOES HERE</p>} */}
+        {description_paragraphs ? description_paragraphs : <p>DESCRIPTION GOES HERE</p>}
       </div>
       
       
