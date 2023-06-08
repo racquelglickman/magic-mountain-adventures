@@ -52,7 +52,7 @@ function Home() {
     .then(data => {
       setUserAdventures(data)
       })
-  }, [])
+  }, [toggleAdventures])
 
   // Data for rendering markers
   // const [markers, setMarkers] = useState(attractions)

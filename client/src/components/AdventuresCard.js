@@ -1,7 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 function AdventuresCard({adventure, onAdventureDelete}) {
 
+    const [riddenStatus, setRiddenStatus] = useState(adventure.ridden)
+
+    console.log(riddenStatus)
     // Backend is already JSONifying response so `res -> res.json()` is unneeded here
     function handleDelete() {
         fetch(`/adventures/${adventure.id}`, 
@@ -24,13 +27,15 @@ function AdventuresCard({adventure, onAdventureDelete}) {
             "content-type" : "application/json"
         },
         body: JSON.stringify({ridden: true})})
+        .then(r => r.json())
+        .then(data => setRiddenStatus(data))
       }
 
   return (
     <div>
         <h2>{adventure.attraction.name}</h2>
         <p>{adventure.attraction.type}</p>
-        <button onClick={setRidden}>RIDDEN</button>
+        {riddenStatus ? null : <button onClick={setRidden}>RIDDEN</button>}
         <button onClick={handleDelete}>REMOVE</button>
     </div>
   )
