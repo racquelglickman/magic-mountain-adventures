@@ -168,8 +168,8 @@ class AdventureById(Resource):
         
     def patch(self, id):
         adventure = Adventure.query.filter_by(id=id).first()
-        for attr in request.json():
-            setattr(adventure, attr, request.json()[attr])
+        for attr in request.json:
+            setattr(adventure, attr, request.json[attr])
 
         db.session.add(adventure)
         db.session.commit()
