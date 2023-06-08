@@ -15,6 +15,10 @@ from faker import Faker
 from app import app
 from models import db, User, Attraction, Adventure
 
+json_data = json.load(open('../JSON_attractions.json'))
+json_rows = json_data[0]['rows']
+
+
 attractions = []
 
 def make_attraction(name, type, thrill, height, url):
@@ -192,6 +196,14 @@ if __name__ == '__main__':
             ride_location = scraped_ride['location']
             attraction.latitude = ride_location['latitude']
             attraction.longitude = ride_location['longitude']
+
+        # Adding thumbnails and descriptions
+        for attraction in attractions:
+            for row in json_rows:
+                if attraction.name == row[2]:
+                    attraction.thumbnail = row[13]
+                    attraction.description = row[14]
+                    
         
         # attractions[0].description = json.dumps({0: 'Just like the brave pirates next door on the Buccaneer, the Swashbuckler is your ticket to a daring adventure. \xa0You’ll fly boldly through the air with the trees at your feet!'})
         # print(attractions[0].description)
