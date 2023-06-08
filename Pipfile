@@ -15,6 +15,7 @@ faker = "*"
 selenium = "*"
 asyncio = "*"
 bs4 = "*"
+requests = "*"
 
 [dev-packages]
 

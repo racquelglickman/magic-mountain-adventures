@@ -13,6 +13,7 @@ function Map({ toggle, adventures }) {
   return (
     <div className='mapbox'>
         <MapContainer center={center} zoom={16}>
+            
             <TileLayer
                 url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
