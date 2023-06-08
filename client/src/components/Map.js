@@ -25,6 +25,7 @@ function Map({ toggle, adventures }) {
                   <div>
                     <h3>{a.attraction.name}</h3>
                     <p>Thrill Level: {a.attraction.thrill_level}</p>
+                    <p>Ride Type: {a.attraction.type}</p>
                   </div>
                 </Popup>
               </Marker>
@@ -34,6 +35,7 @@ function Map({ toggle, adventures }) {
                   <div>
                     <h3>{a.name}</h3>
                     <p>Thrill Level: {a.thrill_level}</p>
+                    <p>Ride Type: {a.type}</p>
                   </div>
                 </Popup>
               </Marker>
