@@ -6,6 +6,7 @@ import { MyContext } from './MyProvider';
 import ToggleSwitch from './ToggleSwitch';
 import AdventuresContainer from './AdventuresContainer'
 import './attractionCard.css';
+import Map from "./Map"
 
 function Home() {
   const { attractions, user } = useContext(MyContext);
@@ -20,7 +21,7 @@ function Home() {
   }
 
   const filteredList = attractions.filter((attraction) => {
-    return attraction.name.toLowerCase().includes(attractionSearch.toLowerCase());
+    return attraction.name.toLowerCase().includes(attractionSearch.toLowerCase()) || attraction.thrill_level.toLowerCase().includes(attractionSearch.toLocaleLowerCase());
   });
 
   const handleNextPage = () => {
@@ -63,7 +64,7 @@ function Home() {
       
       <div className="contentContainer">
         <div className="attractionsWrapper">
-          {!toggleAdventures && (
+          {!toggleAdventures ? (
             <div>
               <AttractionsContainer
                 filteredList={filteredList}
@@ -86,17 +87,15 @@ function Home() {
                 >Next</button>
               </div>
             </div>
+          ) : (
+            <AdventuresContainer adventures={userAdventures}/>
           )}      
         </div>
-        
-        {toggleAdventures ? (
-          <AdventuresContainer adventures={userAdventures}/>
-        ) : (
-          <div className="mapContainer">
-            {/* Map component goes here */}
-            <div className="mapPlaceholder">Map Placeholder</div>
+        <div className="mapContainer">
+            <Map />
+            {/* <div className="mapPlaceholder">Map Placeholder</div> */}
           </div>
-        )}
+      
       </div>
     </div>
   );
