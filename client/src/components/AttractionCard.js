@@ -56,8 +56,8 @@ function AttractionCard({ attraction, setUserAdventures, adventures }) {
               Thrill Level:{' '}
               <span className={`glow ${getThrillLevelClass()}`}>{attraction.thrill_level}</span>
             </p>
-            <button onClick={addAventure}>ADD</button>
           </div>
+          <div className="addButtonDiv"><button className="addButton" onClick={addAventure}>ADD</button></div>
         </div>
       </div>
     </div>
