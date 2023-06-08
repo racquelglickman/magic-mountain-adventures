@@ -41,7 +41,7 @@
   .userInfo {
     display: flex;
     flex-direction: column;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Mouser;
     padding: 5px;
   }
   
@@ -65,7 +65,7 @@
     margin-top: 20px;
     padding: 5px;
     width: 75%;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Mouser;
   }
 
   .adventureTitle {
