@@ -202,7 +202,16 @@
   .glow.maximum {
     text-shadow: 0 0 8px rgba(255, 0, 0, 0.4);
   }
-  
+
+  /* .addButtonDiv {
+    justify-content: right;
+  }
+   */
+  /* .addButton {
+    text-align: right;
+  } */
+
+
   .bg {
     display: flex;
     justify-content: center;
