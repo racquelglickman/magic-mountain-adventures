@@ -51,8 +51,19 @@ function Home() {
     .then(r => r.json())
     .then(data => {
       setUserAdventures(data)
-      console.log(data)})
+      })
   }, [])
+
+  // Data for rendering markers
+  // const [markers, setMarkers] = useState(attractions)
+
+  // useEffect(() => {
+  //   if (toggleAdventures) {
+  //     setMarkers(userAdventures)
+  //   } else {
+  //     setMarkers(attractions)
+  //   }
+  // }, [toggleAdventures])
 
   return (
     <div className="homeContainer">
@@ -92,7 +103,7 @@ function Home() {
           )}      
         </div>
         <div className="mapContainer">
-            <Map />
+            <Map toggle={toggleAdventures} adventures={userAdventures} />
             {/* <div className="mapPlaceholder">Map Placeholder</div> */}
           </div>
       
