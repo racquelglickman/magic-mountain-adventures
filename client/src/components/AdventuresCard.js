@@ -57,14 +57,35 @@ function AdventuresCard({adventure, onAdventureDelete}) {
 
       // }
 
+      const getThrillLevelClass = () => {
+        switch (adventure.attraction.thrill_level) {
+          case 'Mild':
+            return 'glow mild';
+          case 'Moderate':
+            return 'glow moderate';
+          case 'Maximum':
+            return 'glow maximum';
+          default:
+            return 'glow';
+        }
+      };
+
   return (
     <div className="adventureCard">
+      <div className="headerWrapper">
+        <div className="adventureDetailBox">
         <h2 className="adventureAttractionName">{adventure.attraction.name}</h2>
         <p className="adventureAttractionType">{adventure.attraction.type}</p>
-        {riddenStatus ? <button className="adventureButton" onClick={setRidden}>EXIT</button> : 
+        <p className="adventureAttractionThrill"> Thrill Level:
+        <span className={`glow ${getThrillLevelClass()}`}> {adventure.attraction.thrill_level}</span></p>
+        </div>
+        <div className="reviewFormContainer">
+        {riddenStatus ? <button className="adventureButton goBackButton"  onClick={setRidden}>GO BACK</button> : 
         <button className="adventureButton" onClick={handleDelete}>REMOVE</button>}
         {riddenStatus ? <ReviewForm handleForm={handleForm} /> : 
         <button className="adventureButton" onClick={setRidden}>COMPLETED?</button>}
+          </div>
+        </div>
     </div>
   )
 }
