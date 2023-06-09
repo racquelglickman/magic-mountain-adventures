@@ -203,7 +203,9 @@ if __name__ == '__main__':
                 if attraction.name == row[2]:
                     attraction.thumbnail = row[13]
                     attraction.description = row[14]
-                    
+            if attraction.name == "Taz’s Trucking Co.":
+                attraction.thumbnail = 'https://static.wikia.nocookie.net/sixflags/images/b/bc/Tazstruckingco.jpg/revision/latest?cb=20181202093334'
+                   
         
         # attractions[0].description = json.dumps({0: 'Just like the brave pirates next door on the Buccaneer, the Swashbuckler is your ticket to a daring adventure. \xa0You’ll fly boldly through the air with the trees at your feet!'})
         # print(attractions[0].description)
