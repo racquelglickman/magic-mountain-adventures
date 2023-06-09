@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 
 function ReviewForm({ handleForm }) {
-  const [radio, setRadio] = useState(null)
+  const [radio, setRadio] = useState(0)
   const [waitTime, setWaitTime] = useState(0)
 
 

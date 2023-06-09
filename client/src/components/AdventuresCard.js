@@ -27,6 +27,7 @@ function AdventuresCard({adventure, onAdventureDelete}) {
             "content-type" : "application/json"
         },
         body: JSON.stringify({
+          ridden: true,
           wait_time: wait,
           rating: rating
         })})
@@ -38,20 +39,25 @@ function AdventuresCard({adventure, onAdventureDelete}) {
       }
 
       function setRidden() {
-        fetch(`/adventures/${adventure.id}`,
-        {method: 'PATCH',
-        headers: {
-            "content-type" : "application/json"
-        },
-        body: JSON.stringify({ridden: true})})
-        .then(r => r.json())
-        .then(data => {setRiddenStatus(data)})}
+        // fetch(`/adventures/${adventure.id}`,
+        // {method: 'PATCH',
+        // headers: {
+        //     "content-type" : "application/json"
+        // },
+        // body: JSON.stringify({ridden: true})})
+        // .then(r => r.json())
+        // .then(data => {setRiddenStatus(data.ridden)})
+
+        setRiddenStatus(!riddenStatus)
+      
+      }
 
   return (
     <div>
         <h2>{adventure.attraction.name}</h2>
         <p>{adventure.attraction.type}</p>
-        <button onClick={handleDelete}>REMOVE</button>
+        {riddenStatus ? <button onClick={setRidden}>EXIT</button> : 
+        <button onClick={handleDelete}>REMOVE</button>}
         {riddenStatus ? <ReviewForm handleForm={handleForm} /> : 
         <button onClick={setRidden}>COMPLETED?</button>}
     </div>
