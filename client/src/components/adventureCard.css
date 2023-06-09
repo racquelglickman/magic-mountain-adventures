@@ -22,3 +22,14 @@
     margin-bottom: 5px;
     
   }
+
+  .noCardContainer {
+    display: flex;
+    padding: 10px;
+  }
+
+  .noCardContainer img {
+    width: 500px;
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: 0.4rem;
+}

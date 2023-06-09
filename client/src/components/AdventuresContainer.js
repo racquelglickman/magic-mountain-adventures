@@ -25,7 +25,14 @@ function AdventuresContainer({adventures, setUserAdventures}) {
     console.log(adventureCards)
   return (
     <div className="adventuresContainer">
-        {adventureCards.length > 0 ? adventureCards : <h1 className="emptyAdventure">You currently have no planned adventures!</h1>}
+        {adventureCards.length > 0 ? adventureCards : 
+        <div>
+          <h1 className="emptyAdventure">You currently have no planned adventures!</h1>
+          <div className="noCardContainer">
+            <img src="https://sf-static.sixflags.com/wp-content/uploads/2020/04/default_app-ride-kid_36-1.jpg" alt="Go add some adventures!" />
+          </div>
+        </div>
+        }
     </div>
   )
 }
