@@ -5,7 +5,6 @@ function AdventuresCard({adventure, onAdventureDelete}) {
 
     const [riddenStatus, setRiddenStatus] = useState(adventure.ridden)
 
-    console.log(riddenStatus)
     // Backend is already JSONifying response so `res -> res.json()` is unneeded here
     function handleDelete() {
         fetch(`/adventures/${adventure.id}`, 
@@ -22,8 +21,6 @@ function AdventuresCard({adventure, onAdventureDelete}) {
       }
       
       function handleForm(wait, rating) {
-        console.log(wait, rating)
-
         fetch(`/adventures/${adventure.id}`,
         {method: 'PATCH',
         headers: {
@@ -35,7 +32,7 @@ function AdventuresCard({adventure, onAdventureDelete}) {
         })})
         .then(r => r.json())
         .then(data => {
-          console.log(data)
+          setRiddenStatus(false)
           onAdventureDelete(adventure.id)
         })
       }
@@ -48,8 +45,7 @@ function AdventuresCard({adventure, onAdventureDelete}) {
         },
         body: JSON.stringify({ridden: true})})
         .then(r => r.json())
-        .then(data => setRiddenStatus(data))
-      }
+        .then(data => {setRiddenStatus(data)})}
 
   return (
     <div>

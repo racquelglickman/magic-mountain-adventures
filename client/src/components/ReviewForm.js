@@ -6,12 +6,12 @@ function ReviewForm({ handleForm }) {
 
 
   function handleWaitChange(e) {
-    console.log(e.target.value)
+    
     setWaitTime(e.target.value)
   }
 
   function handleRadioChange(e) {
-    console.log(e.target.value)
+    
     setRadio(e.target.value)
   }
 
