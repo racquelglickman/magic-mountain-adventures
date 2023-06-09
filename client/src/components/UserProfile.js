@@ -70,11 +70,11 @@ function UserProfile() {
             : 
             <span className="userInput">: {editHeightValue} in.</span> 
           }
-          <button onClick={handleHeightChange}>Edit</button></p>
+          {!editHeight ? <button onClick={handleHeightChange}>Edit</button> : null}</p>
       </div>
       </div>
       <div className="historyContainer"> 
-      <p className="adventureTitle" onClick={() => {console.log(user.adventures)}}>{user.first_name}'s Adventure History</p>
+      <p className="adventureTitle" >{user.first_name}'s Adventure History</p>
       <table>
         <tr>
           <th>Date</th>
