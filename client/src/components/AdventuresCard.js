@@ -52,6 +52,10 @@ function AdventuresCard({adventure, onAdventureDelete}) {
       
       }
 
+      // function attractionPatch() {
+
+      // }
+
   return (
     <div>
         <h2>{adventure.attraction.name}</h2>
