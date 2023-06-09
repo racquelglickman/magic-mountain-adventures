@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react'
 import './userProfile.css'
 import { MyContext } from './MyProvider';
+import { useResolvedPath } from 'react-router-dom';
 
 function UserProfile() {
 
@@ -27,6 +28,15 @@ function UserProfile() {
     setEditHeight(!editHeight)
   }
 
+  const adventureHistory = user.adventures.map((adv) => {
+    return <tr>
+            <th>{adv.date.split(' ')[0]}</th>
+            <th>{adv.attraction.name}</th>
+            <th>{adv.rating}</th>
+            <th>{adv.wait_time}</th>
+            <th>{adv.ridden == false? "Not yet!" : "It was great!"}</th>
+          </tr>
+  })
 
   return (
     <div className="profileContainer">
@@ -57,7 +67,17 @@ function UserProfile() {
       </div>
       </div>
       <div className="historyContainer"> 
-      <p className="adventureTitle">Adventure History</p>
+      <p className="adventureTitle" onClick={() => {console.log(user.adventures)}}>Adventure History</p>
+      <table>
+        <tr>
+          <th>Date</th>
+          <th>Attraction</th>
+          <th>Rating</th>
+          <th>Wait Time</th>
+          <th>Ridden</th>
+        </tr>
+        {adventureHistory}
+      </table>
         </div>
     </div>
   )
