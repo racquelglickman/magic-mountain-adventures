@@ -1,5 +1,6 @@
 import React, {useState} from 'react'
 import ReviewForm from './ReviewForm'
+import './adventureCard.css'
 
 function AdventuresCard({adventure, onAdventureDelete}) {
 
@@ -57,13 +58,13 @@ function AdventuresCard({adventure, onAdventureDelete}) {
       // }
 
   return (
-    <div>
-        <h2>{adventure.attraction.name}</h2>
-        <p>{adventure.attraction.type}</p>
-        {riddenStatus ? <button onClick={setRidden}>EXIT</button> : 
-        <button onClick={handleDelete}>REMOVE</button>}
+    <div className="adventureCard">
+        <h2 className="adventureAttractionName">{adventure.attraction.name}</h2>
+        <p className="adventureAttractionType">{adventure.attraction.type}</p>
+        {riddenStatus ? <button className="adventureButton" onClick={setRidden}>EXIT</button> : 
+        <button className="adventureButton" onClick={handleDelete}>REMOVE</button>}
         {riddenStatus ? <ReviewForm handleForm={handleForm} /> : 
-        <button onClick={setRidden}>COMPLETED?</button>}
+        <button className="adventureButton" onClick={setRidden}>COMPLETED?</button>}
     </div>
   )
 }

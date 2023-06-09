@@ -1,5 +1,6 @@
 import React from 'react'
 import AdventuresCard from './AdventuresCard'
+import './adventureCard.css'
 
 function AdventuresContainer({adventures, setUserAdventures}) {
 
@@ -19,7 +20,7 @@ function AdventuresContainer({adventures, setUserAdventures}) {
 
   return (
     <div className="adventuresContainer">
-        {userAdventures.length > 0 ? userAdventures : <h1>You Currently have no planned Adventures!!</h1>}
+        {userAdventures.length > 0 ? userAdventures : <h1 className="emptyAdventure">You currently have no planned adventures!</h1>}
     </div>
   )
 }
