@@ -8,6 +8,13 @@ function UserProfile() {
   const {user} = useContext(MyContext)
   const [editHeight, setEditHeight] = useState(false)
   const [editHeightValue, setEditHeightValue] = useState(user.height)
+  const [userAdventures, setUserAdventures] = useState(user.adventures)
+
+  fetch(`/users/${user.id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      setUserAdventures(data.adventures)
+    })
 
   function handleHeightChange() {
     console.log('Changing the height')
@@ -28,7 +35,7 @@ function UserProfile() {
     setEditHeight(!editHeight)
   }
 
-  const adventureHistory = user.adventures.map((adv) => {
+  const adventureHistory = userAdventures.map((adv) => {
     return <tr>
             <th>{adv.date.split(' ')[0]}</th>
             <th>{adv.attraction.name}</th>
