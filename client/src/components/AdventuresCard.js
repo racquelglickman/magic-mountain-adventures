@@ -1,4 +1,5 @@
 import React, {useState, useContext} from 'react'
+import { useNavigate } from "react-router-dom"
 import { MyContext } from './MyProvider';
 import ReviewForm from './ReviewForm'
 import './adventureCard.css'
@@ -7,6 +8,12 @@ function AdventuresCard({adventure, onAdventureDelete}) {
 
     const [riddenStatus, setRiddenStatus] = useState(adventure.ridden)
     const { allAdventures } = useContext(MyContext);
+
+    const navigate = useNavigate()
+
+    function handleNavigateClick() {
+      navigate(`/attractions/${adventure.attraction_id}`, { state: adventure.attraction })
+    }
 
     // Backend is already JSONifying response so `res -> res.json()` is unneeded here
     function handleDelete() {
@@ -99,7 +106,7 @@ function AdventuresCard({adventure, onAdventureDelete}) {
       };
 
   return (
-    <div className="adventureCard">
+    <div className="adventureCard" onClick={handleNavigateClick}>
       <div className="headerWrapper">
         <div className="adventureDetailBox">
         <h2 className="adventureAttractionName">{adventure.attraction.name}</h2>

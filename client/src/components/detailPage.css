@@ -88,5 +88,31 @@
   }
 
   .detailsButton{
-    width:50%
+    width: 50%;
+    background-color: #b0e6b0;
+    border-radius: 80px;
+    box-shadow: rgba(44, 187, 99, 0.10) 0 1px 2px, rgba(44, 187, 99, 0.10) 0 2px 4px, rgba(44, 187, 99, 0.10) 0 4px 8px, rgba(44, 187, 99, 0.10) 0 8px 16px, rgba(44, 187, 99, 0.10) 0 16px 32px;
+    color: rgb(33, 33, 33);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    font-weight: bold;
+    padding: 1px 10px;
+    height: 30px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 11px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    margin: 3px;
+    margin-top: 10px;
+    margin-right: 5px;
   }
+
+.detailsButton:hover {
+    box-shadow: rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+}
