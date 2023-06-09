@@ -26,7 +26,7 @@ function ReviewForm({ handleForm }) {
     <div>
       <form className='reviewForm' onSubmit={handleSubmit}>
         <label>How long did you wait in line?</label><br></br>
-        <input type='number' value={waitTime} step={5} min={0} onChange={handleWaitChange}></input> min<br></br>
+        <input type='number' value={waitTime} step={5} min={0} onChange={handleWaitChange}></input> min<br></br><br></br>
         
         <label>Rating</label><br></br>
         1<input type='radio' value='1' onChange={handleRadioChange} checked={radio === "1"}></input><br></br>
@@ -36,7 +36,7 @@ function ReviewForm({ handleForm }) {
         5<input type='radio' value='5' onChange={handleRadioChange} checked={radio === "5"}></input><br></br>
         <br></br>
 
-        <button>Submit</button>
+        <button>COMPLETE ADVENTURE</button>
       </form>
     </div>
   )
