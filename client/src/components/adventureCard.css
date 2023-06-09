@@ -1,0 +1,24 @@
+.adventureCard {
+    user-select: none;
+    margin: 0.5rem;
+    background-color: #282c34;
+    background: linear-gradient(0deg, #ffffff, #cccccc);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: 0.7rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    overflow: hidden;
+    transition: 0.5s all;
+    /* width: 175px; */
+    max-height: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-block: 5px;
+    position: relative;
+    flex-basis: calc(25% - 1rem);
+    margin-right: 10px;
+    margin-bottom: 5px;
+    
+  }

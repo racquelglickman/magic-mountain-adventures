@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { useNavigate } from "react-router-dom"
-import './attractionCard.css';
+import './homePage.css';
 import { MyContext } from './MyProvider';
 
 function AttractionCard({ attraction, setUserAdventures, adventures }) {

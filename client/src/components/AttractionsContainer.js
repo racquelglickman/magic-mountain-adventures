@@ -1,6 +1,6 @@
 import React from 'react';
 import AttractionCard from './AttractionCard';
-import './attractionCard.css';
+import './homePage.css';
 
 function AttractionsContainer({ filteredList, currentPage, attractionsPerPage, setUserAdventures, adventures }) {
   const indexOfLastAttraction = currentPage * attractionsPerPage;

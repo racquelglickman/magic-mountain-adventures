@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react'
 import { useLocation } from "react-router-dom"
 import { MyContext } from './MyProvider';
+import './detailPage.css'
 
 
 function AttractionDetails() {
@@ -14,6 +15,19 @@ function AttractionDetails() {
   const description_paragraphs = Object.values(attraction.description).map((paragraph) => {
     return <p>{paragraph}</p>
   })
+
+  const getThrillLevelClass = () => {
+    switch (attraction.thrill_level) {
+      case 'Mild':
+        return 'glow mild';
+      case 'Moderate':
+        return 'glow moderate';
+      case 'Maximum':
+        return 'glow maximum';
+      default:
+        return 'glow';
+    }
+  };
 
   function handleClick(e) {
     console.log(e)
@@ -38,24 +52,29 @@ function AttractionDetails() {
   }
 
   return (
-    <div>
-      <h1>{attraction.name}</h1>
-      <img src={attraction.thumbnail ? attraction.thumbnail : null} alt={attraction.name} />
-      <h3>Attraction Type: {attraction.type}</h3>
-      <h3>Thrill Level: {attraction.thrill_level}</h3>
-      {attraction.height_req > 0 ? <p>Minimum Height Required: {attraction.height_req} inches</p>: 
-      <p>Minimum Height Required:  None</p>}
-      {attraction.avg_wait ? <p>Average Wait Time: {attraction.avg_wait}</p> : 
+    <div className="detailPageContainer">
+      <div className='divContainer'>
+      <div className = "imgContainer">
+      <img className="detailsImg" src={attraction.thumbnail ? attraction.thumbnail : null} alt={attraction.name}/></div>
+      <div className="detailsContainer">
+      <h1 className="detailsName">{attraction.name}</h1>
+      <p className="detailsType">Attraction Type: <span className="output">{attraction.type}</span></p>
+      <p className='detailsThrill'>Thrill Level:{' '}
+              <span className={`glow ${getThrillLevelClass()}`}>{attraction.thrill_level}</span>
+            </p>
+      {attraction.height_req > 0 ? <p className="heightReq" >Minimum Height Required: <span className="output">{attraction.height_req} inches</span></p>: 
+      <p className="heightReq">Minimum Height Required: <span className="output"> None</span></p>}
+      {/* {attraction.avg_wait ? <p>Average Wait Time: {attraction.avg_wait}</p> : 
       <p>Average Wait Time: N/A</p>}
       {attraction.avg_rating ? <p>Average User Rating: {attraction.avg_rating}</p> : 
       <p>Average User Rating: N/A</p>}
-      
-      <div>
+       */}
+      <div className="detailsDescription">
         {description_paragraphs ? description_paragraphs : <p>DESCRIPTION GOES HERE</p>}
-      </div>
-      
-      
-      <button onClick={handleClick} >Add to Adventures</button>
+        </div>
+        <button className="detailsButton" onClick={handleClick} >Add to Adventures</button>
+        </div>
+    </div>
     </div>
   )
 }

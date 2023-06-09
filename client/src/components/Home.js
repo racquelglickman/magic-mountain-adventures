@@ -5,7 +5,8 @@ import AttractionsContainer from './AttractionsContainer';
 import { MyContext } from './MyProvider';
 import ToggleSwitch from './ToggleSwitch';
 import AdventuresContainer from './AdventuresContainer'
-import './attractionCard.css';
+import './homePage.css';
+import './searchBar.css'
 import Map from "./Map"
 
 function Home() {
@@ -67,10 +68,9 @@ function Home() {
 
   return (
     <div className="homeContainer">
-      
-      {!toggleAdventures ? <Search attractionSearch={attractionSearch} handleSearch={handleSearch} /> : null}
       <div className="headerContainer">
-        <ToggleSwitch label=' ' handleToggle={handleToggle} />
+      {!toggleAdventures ? <div className="searchContainer"><Search attractionSearch={attractionSearch} handleSearch={handleSearch} /></div> : null}
+      <div className="toggleContainer"><ToggleSwitch label=' ' handleToggle={handleToggle} /></div>
       </div>
       
       <div className="contentContainer">
