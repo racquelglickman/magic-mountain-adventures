@@ -54,7 +54,7 @@ function AttractionDetails() {
   return (
     <div className="detailPageContainer">
       <div className='divContainer'>
-      <div className = "headerContainer">
+      <div className = "imgContainer">
       <img className="detailsImg" src={attraction.thumbnail ? attraction.thumbnail : null} alt={attraction.name}/></div>
       <div className="detailsContainer">
       <h1 className="detailsName">{attraction.name}</h1>

@@ -60,6 +60,7 @@
     border: 0 solid #bbb;
     border-radius: 20px;
     transition: all 0.3s ease-in 0s;
+    
   }
   .checkbox:checked + .label .inner {
     margin-left: 0;
