@@ -1,4 +1,4 @@
-import React, { useState, useContext } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
 import { useLocation } from "react-router-dom"
 import { MyContext } from './MyProvider';
 import './detailPage.css'
@@ -6,9 +6,15 @@ import './detailPage.css'
 
 function AttractionDetails() {
   const location = useLocation()
-  const attraction = location.state
+  // const attraction = location.state
 
-  console.log(attraction)
+  const [attraction, setAttraction] = useState(location.state)
+
+  useEffect(() => {
+    fetch(`/attractions/${location.state.id}`)
+    .then(r => r.json())
+    .then(data => setAttraction(data))
+  }, [])
 
   const { user } = useContext(MyContext)
 
@@ -64,11 +70,11 @@ function AttractionDetails() {
             </p>
       {attraction.height_req > 0 ? <p className="heightReq" >Minimum Height Required: <span className="output">{attraction.height_req} inches</span></p>: 
       <p className="heightReq">Minimum Height Required: <span className="output"> None</span></p>}
-      {/* {attraction.avg_wait ? <p>Average Wait Time: {attraction.avg_wait}</p> : 
+      {attraction.avg_wait ? <p>Average Wait Time: {attraction.avg_wait} minutes</p> : 
       <p>Average Wait Time: N/A</p>}
-      {attraction.avg_rating ? <p>Average User Rating: {attraction.avg_rating}</p> : 
+      {attraction.avg_rating ? <p>Average User Rating: {attraction.avg_rating} / 5.0</p> : 
       <p>Average User Rating: N/A</p>}
-       */}
+      
       <div className="detailsDescription">
         {description_paragraphs ? description_paragraphs : <p>DESCRIPTION GOES HERE</p>}
         </div>

@@ -8,7 +8,7 @@ function MyProvider({ children }) {
     // attractions fetch
 
     const [attractions, setAttractions] = useState([])
-
+    
     useEffect(() => {
         fetch("/attractions")
         .then(r => r.json())
@@ -16,7 +16,7 @@ function MyProvider({ children }) {
     }, [])
     
     // all adventures fetch
-
+    
     const [allAdventures, setAllAdventures] = useState([])
 
     useEffect(() => {
