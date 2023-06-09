@@ -19,7 +19,7 @@ function AdventuresContainer({adventures, setUserAdventures}) {
 
   return (
     <div>
-        {userAdventures}
+        {userAdventures.length === 0 ? userAdventures : <h1>You Currently have no planned Adventures!!</h1>}
     </div>
   )
 }
