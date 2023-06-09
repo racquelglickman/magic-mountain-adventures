@@ -80,7 +80,7 @@ function AdventuresCard({adventure, onAdventureDelete}) {
         <span className={`glow ${getThrillLevelClass()}`}> {adventure.attraction.thrill_level}</span></p>
         </div>
         <div className="reviewFormContainer">
-        {riddenStatus ? <button className="adventureButton goBackButton"  onClick={setRidden}>GO BACK</button> : 
+        {riddenStatus ? <button className="adventureButton goBackButton"  onClick={setRidden}>⏎</button> : 
         <button className="adventureButton" onClick={handleDelete}>REMOVE</button>}
         {riddenStatus ? <ReviewForm handleForm={handleForm} /> : 
         <button className="adventureButton" onClick={setRidden}>COMPLETED?</button>}
