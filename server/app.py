@@ -122,19 +122,16 @@ class AttractionById(Resource):
         attraction = Attraction.query.filter_by(id=id).first()
 
         if attraction:
-            attraction_dict = {
-                'name': attraction.name, 
-                'url': attraction.url,
-                'description': json.loads(attraction.description)
-            }
+            attraction_dict = attraction.to_dict()
+            attraction_dict['description'] = json.loads(attraction_dict['description']) 
             return attraction_dict, 200
         else:
             return {'error': '404: Attraction not found'}, 404
 
     def patch(self, id):
         attraction = Attraction.query.filter_by(id=id).first()
-        for attr in request.json():
-            setattr(attraction, attr, request.json()[attr])
+        for attr in request.json:
+            setattr(attraction, attr, request.json[attr])
 
         db.session.add(attraction)
         db.session.commit()

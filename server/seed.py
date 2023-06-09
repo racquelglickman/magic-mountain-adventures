@@ -6,7 +6,7 @@ import requests
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-import sys, asyncio, json
+import sys, asyncio, json, random
 
 # Remote library imports
 from faker import Faker
@@ -206,6 +206,10 @@ if __name__ == '__main__':
             if attraction.name == "Taz’s Trucking Co.":
                 attraction.thumbnail = 'https://static.wikia.nocookie.net/sixflags/images/0/0a/Taz%27s_Trucking_Co._station_SFMM_2023-05-07.jpg'
                    
+        #Adding faker data for rating and wait time
+        for attraction in attractions:
+            attraction.avg_rating = round(random.uniform(0.0, 5.0),1)
+            attraction.avg_wait = randint(5, 150)
         
         # attractions[0].description = json.dumps({0: 'Just like the brave pirates next door on the Buccaneer, the Swashbuckler is your ticket to a daring adventure. \xa0You’ll fly boldly through the air with the trees at your feet!'})
         # print(attractions[0].description)

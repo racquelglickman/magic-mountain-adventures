@@ -15,6 +15,16 @@ function MyProvider({ children }) {
         .then(data => setAttractions(data))
     }, [])
     
+    // all adventures fetch
+
+    const [allAdventures, setAllAdventures] = useState([])
+
+    useEffect(() => {
+        fetch("/adventures")
+        .then(r => r.json())
+        .then(data => setAllAdventures(data))
+    }, [])
+    
     // auto login authetification
     const [user, setUser] = useState(null)
 
@@ -31,7 +41,7 @@ function MyProvider({ children }) {
 
     return (
         <MyContext.Provider
-            value={({user: user, setUser: setUser, attractions: attractions})}
+            value={({user: user, setUser: setUser, attractions: attractions, allAdventures: allAdventures})}
         >
             {children}
         </MyContext.Provider>
