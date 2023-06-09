@@ -41,7 +41,7 @@ function UserProfile() {
             <th>{adv.attraction.name}</th>
             <th>{adv.rating}</th>
             <th>{adv.wait_time}</th>
-            <th>{adv.ridden == false? "Not yet!" : "It was great!"}</th>
+            <th>{adv.ridden == false? "Not yet!" : '✅'}</th>
           </tr>
   })
 
