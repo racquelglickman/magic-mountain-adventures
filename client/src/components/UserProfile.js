@@ -74,7 +74,7 @@ function UserProfile() {
       </div>
       </div>
       <div className="historyContainer"> 
-      <p className="adventureTitle" onClick={() => {console.log(user.adventures)}}>Adventure History</p>
+      <p className="adventureTitle" onClick={() => {console.log(user.adventures)}}>{user.first_name}'s Adventure History</p>
       <table>
         <tr>
           <th>Date</th>
