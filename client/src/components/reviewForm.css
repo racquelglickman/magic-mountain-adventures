@@ -1,0 +1,46 @@
+.reviewForm {
+    margin: 8px;
+    padding: 12px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    line-height: 1.5;
+}
+
+.reviewLabel {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.reviewInput {
+    padding-bottom: 1%;
+    border-radius: 5px;
+    box-shadow: rgb(0 0 0 / 16%) 1px 1px 10px;
+}
+
+.reviewButton {
+        width: 100%;
+        background-color: #b0e6b0;
+        border-radius: 80px;
+        box-shadow: rgba(44, 187, 99, 0.10) 0 1px 2px, rgba(44, 187, 99, 0.10) 0 2px 4px, rgba(44, 187, 99, 0.10) 0 4px 8px, rgba(44, 187, 99, 0.10) 0 8px 16px, rgba(44, 187, 99, 0.10) 0 16px 32px;
+        color: rgb(33, 33, 33);
+        cursor: pointer;
+        display: inline-block;
+        font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+        font-weight: bold;
+        padding: 1px 10px;
+        height: 30px;
+        text-align: center;
+        text-decoration: none;
+        transition: all 250ms;
+        border: 0;
+        font-size: 11px;
+        user-select: none;
+        -webkit-user-select: none;
+        touch-action: manipulation;
+
+        margin-right: 5px;
+      }
+    
+    .adventureButton:hover {
+        box-shadow: rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
+        transform: scale(1.05) rotate(-1deg);
+    }
