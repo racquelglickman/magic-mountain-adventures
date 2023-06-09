@@ -36,12 +36,12 @@ function UserProfile() {
   }
 
   const adventureHistory = userAdventures.map((adv) => {
-    return <tr>
-            <th>{adv.date.split(' ')[0]}</th>
-            <th>{adv.attraction.name}</th>
-            <th>{adv.rating}</th>
-            <th>{adv.wait_time}</th>
-            <th>{adv.ridden == false? "Not yet!" : '✅'}</th>
+    return <tr className="adventureHistoryInput">
+            <th className="adventureHistoryInput">{adv.date.split(' ')[0]}</th>
+            <th className="adventureHistoryInput">{adv.attraction.name}</th>
+            <th className="adventureHistoryInput">{adv.rating}</th>
+            <th className="adventureHistoryInput">{adv.wait_time}</th>
+            <th className="checkMarks">{adv.ridden == false? <div style={{color:"red"}}>✗</div>: '✓'}</th>
           </tr>
   })
 
@@ -70,18 +70,19 @@ function UserProfile() {
             : 
             <span className="userInput">: {editHeightValue} in.</span> 
           }
-          {!editHeight ? <button onClick={handleHeightChange}>Edit</button> : null}</p>
+          {!editHeight ? <button className="editButton" onClick={handleHeightChange}>Edit</button> : null}</p>
       </div>
       </div>
       <div className="historyContainer"> 
-      <p className="adventureTitle" onClick = {() => {console.log(userAdventures)}}>{user.first_name}'s Adventure History</p>
-      <table>
+
+      <p className="adventureTitle" >Your Adventure History</p>
+      <table className="tableContainer">
         <tr>
-          <th>Date</th>
-          <th>Attraction</th>
-          <th>Rating</th>
-          <th>Wait Time</th>
-          <th>Ridden</th>
+          <th className="categoryTitle">DATE</th>
+          <th className="categoryTitle">ATTRACTION</th>
+          <th className="categoryTitle">RATING</th>
+          <th className="categoryTitle">WAIT TIME</th>
+          <th className="categoryTitle">RIDDEN</th>
         </tr>
         {adventureHistory}
       </table>

@@ -36,6 +36,7 @@
     border-radius: 50%;
     border: 2px solid #000;
     margin-bottom: 10px;
+    box-shadow: rgba(44, 187, 99, 0.10) 0 1px 2px, rgba(44, 187, 99, 0.10) 0 2px 4px, rgba(44, 187, 99, 0.10) 0 4px 8px, rgba(44, 187, 99, 0.10) 0 8px 16px, rgba(44, 187, 99, 0.10) 0 16px 32px;
   }
   
   .userInfo {
@@ -54,12 +55,39 @@
     margin-left: 15px;
     width: 150%;
     font-weight: bold;
+    box-shadow: rgba(44, 187, 99, 0.10) 0 1px 2px, rgba(44, 187, 99, 0.10) 0 2px 4px, rgba(44, 187, 99, 0.10) 0 4px 8px, rgba(44, 187, 99, 0.10) 0 8px 16px, rgba(44, 187, 99, 0.10) 0 16px 32px;
   }
 
   .userInput {
     font-weight: normal;
     font-family: Arial, Helvetica, sans-serif;
   }
+
+  .editButton {
+    margin: 5px;
+    background-color: #e8e8e8;
+    border-radius: 20px;
+    box-shadow: rgba(44, 187, 99, 0.10) 0 1px 2px, rgba(44, 187, 99, 0.10) 0 2px 4px, rgba(44, 187, 99, 0.10) 0 4px 8px, rgba(44, 187, 99, 0.10) 0 8px 16px, rgba(44, 187, 99, 0.10) 0 16px 32px;
+    color: rgb(33, 33, 33);
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular, -apple-system, system-ui, Roboto, sans-serif;
+    padding: 0 8px;
+    height: 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 11px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+  }
+
+.editButton:hover {
+    box-shadow: rgba(44, 187, 99, 0.15) 0 1px 2px, rgba(44, 187, 99, 0.15) 0 2px 4px, rgba(44, 187, 99, 0.15) 0 4px 8px, rgba(44, 187, 99, 0.15) 0 8px 16px, rgba(44, 187, 99, 0.15) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+}
   
   .historyContainer {
     margin-top: 20px;
@@ -68,6 +96,41 @@
     font-family: Mouser;
   }
 
+  .tableContainer {
+    font-family: Arial, Helvetica, sans-serif;
+    user-select: none;
+    margin: 0.5rem;
+    background-color: #282c34;
+    background: linear-gradient(0deg, #ffffff, #99ce99);
+    box-shadow: 0 7px 20px 5px #00000088;
+    border-radius: 0.7rem;
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px);
+    overflow: hidden;
+    transition: 0.5s all;
+    max-height: 350px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    padding-block: 5px;
+    position: relative;
+    flex-basis: calc(25% - 1rem);
+    margin-left: 20px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    width: 120%;
+  }
+
   .adventureTitle {
     font-weight: bold;
   }
+
+  .adventureHistoryInput {
+    font-weight: normal;
+  }
+
+.checkMarks {
+  font-size: larger;
+  color: green;
+}

@@ -30,9 +30,10 @@
   }
 
   .toggleContainer {
+    position: absolute;
     flex: 1;
-    margin-left: 70px;
-    margin-top: -3px
+    margin-left: 175px;
+    margin-top: -3.5px
   }
   
   .contentContainer {
@@ -66,7 +67,6 @@
     flex: 1;
     margin-top: 10px;
     max-width: calc(50% - 10px);
-    padding: 10px;
   }
   
   .mapPlaceholder {
@@ -104,7 +104,7 @@
     -webkit-backdrop-filter: blur(7px);
     overflow: hidden;
     transition: 0.5s all;
-    /* width: 175px; */
+    width: 175px;
     max-height: 350px;
     background-color: #fff;
     border-radius: 10px;
@@ -112,7 +112,7 @@
     padding: 10px;
     padding-block: 5px;
     position: relative;
-    flex-basis: calc(25% - 1rem);
+    /* flex-basis: calc(25% - 1rem); */
     margin-right: 10px;
     margin-bottom: 5px;
     
