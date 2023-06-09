@@ -11,11 +11,15 @@ function AdventuresContainer({adventures, setUserAdventures}) {
         setUserAdventures(filteredList)
       }
 
-    const userAdventures = adventures.map((adventure) => {return <AdventuresCard adventure={adventure} onAdventureDelete={onAdventureDelete}/>})
+    const userAdventures = adventures.map((adventure) => {
+      if (!adventure.ridden) {
+        return <AdventuresCard adventure={adventure} onAdventureDelete={onAdventureDelete}/>
+      }
+    })
 
   return (
     <div>
-        {userAdventures}
+        {userAdventures.length > 0 ? userAdventures : <h1>You Currently have no planned Adventures!!</h1>}
     </div>
   )
 }

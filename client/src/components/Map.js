@@ -20,15 +20,17 @@ function Map({ toggle, adventures }) {
             />
             {toggle ? 
             adventures.map((a) => {
-              return <Marker key={a.id} position={[a.attraction.latitude, a.attraction.longitude]}>
-                <Popup>
-                  <div>
-                    <h3>{a.attraction.name}</h3>
-                    <p>Thrill Level: {a.attraction.thrill_level}</p>
-                    <p>Ride Type: {a.attraction.type}</p>
-                  </div>
-                </Popup>
-              </Marker>
+              if (!a.ridden) {
+                return <Marker key={a.id} position={[a.attraction.latitude, a.attraction.longitude]}>
+                  <Popup>
+                    <div>
+                      <h3>{a.attraction.name}</h3>
+                      <p>Thrill Level: {a.attraction.thrill_level}</p>
+                      <p>Ride Type: {a.attraction.type}</p>
+                    </div>
+                  </Popup>
+                </Marker>
+              }
             }) : attractions.map((a) => {
               return <Marker key={a.id} position={[a.latitude, a.longitude]}>
                 <Popup>
